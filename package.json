@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack --port 1998",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,6 +22,10 @@
     "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
-    "@eslint/eslintrc": "^3"
+    "@eslint/eslintrc": "^3",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "framer-motion": "^12.5.0",
+    "prettier": "^3.5.3"
   }
 }
