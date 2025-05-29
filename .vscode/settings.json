@@ -22,6 +22,12 @@
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
   },
-  
+
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  "tailwindCSS.experimental.configFile": "src/styles/globals.css",
+
   "cSpell.words": ["autodocs", "clsx", "nextjs"]
 }

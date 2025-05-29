@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@layer components {
+  .ds-btn-sm {
+    @apply bg-blue-500;
+  }
+}
