@@ -35,9 +35,13 @@
   --text-5xl--line-height: normal;
   --text-5xl--letter-spacing: 0.015rem;
 
-  --text-6xl: 60px;
+  --text-6xl: 3.75rem;
   --text-6xl--line-height: normal;
   --text-6xl--letter-spacing: 0.015rem;
+
+  --text-7xl: 72px;
+  --text-7xl--line-height: normal;
+  --text-7xl--letter-spacing: 0.0225rem;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
