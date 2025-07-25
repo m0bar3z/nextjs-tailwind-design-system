@@ -1,2 +1,140 @@
 @import "tailwindcss";
-@import "./design-system.css";
+/* @import "./tokens/colors.css"; */
+
+@theme {
+  --color-gray-*: initial;
+
+  --color-ds-slate-50: #f8fafc;
+  --color-ds-slate-100: #f1f5f9;
+  --color-ds-slate-200: #e2e8f0;
+  --color-ds-slate-300: #cbd5e1;
+  --color-ds-slate-400: #94a3b8;
+  --color-ds-slate-500: #64748b;
+  --color-ds-slate-600: #475569;
+  --color-ds-slate-700: #334155;
+  --color-ds-slate-800: #1e293b;
+  --color-ds-slate-900: #0f172a;
+  --color-ds-slate-950: #020617;
+
+  --color-ds-gray-50: #f9fafb;
+  --color-ds-gray-100: #f3f4f6;
+  --color-ds-gray-200: #e5e7eb;
+  --color-ds-gray-300: #d1d5db;
+  --color-ds-gray-400: #9ca3af;
+  --color-ds-gray-500: #6b7280;
+  --color-ds-gray-600: #4b5563;
+  --color-ds-gray-700: #374151;
+  --color-ds-gray-800: #1f2937;
+  --color-ds-gray-900: #111827;
+  --color-ds-gray-950: #030712;
+
+  --color-ds-teal-50: #f0fdfa;
+  --color-ds-teal-100: #ccfbf1;
+  --color-ds-teal-200: #99f6e4;
+  --color-ds-teal-300: #5eead4;
+  --color-ds-teal-400: #2dd4bf;
+  --color-ds-teal-500: #14b8a6;
+  --color-ds-teal-600: #0d9488;
+  --color-ds-teal-700: #0f766e;
+  --color-ds-teal-800: #115e59;
+  --color-ds-teal-900: #134e4a;
+  --color-ds-teal-950: #042f2e;
+
+  --color-ds-blue-50: #eff6ff;
+  --color-ds-blue-100: #dbeafe;
+  --color-ds-blue-200: #bfdbfe;
+  --color-ds-blue-300: #93c5fd;
+  --color-ds-blue-400: #60a5fa;
+  --color-ds-blue-500: #3b82f6;
+  --color-ds-blue-600: #2563eb;
+  --color-ds-blue-700: #1d4ed8;
+  --color-ds-blue-800: #1e40af;
+  --color-ds-blue-900: #1e3a8a;
+  --color-ds-blue-950: #172554;
+
+  --color-ds-red-50: #fef2f2;
+  --color-ds-red-100: #fee2e2;
+  --color-ds-red-200: #fecaca;
+  --color-ds-red-300: #fca5a5;
+  --color-ds-red-400: #f87171;
+  --color-ds-red-500: #ef4444;
+  --color-ds-red-600: #dc2626;
+  --color-ds-red-700: #b91c1c;
+  --color-ds-red-800: #991b1b;
+  --color-ds-red-900: #7f1d1d;
+  --color-ds-red-950: #450a0a;
+
+  --color-ds-yellow-50: #fefce8;
+  --color-ds-yellow-100: #fef9c3;
+  --color-ds-yellow-200: #fef08a;
+  --color-ds-yellow-300: #fde047;
+  --color-ds-yellow-400: #facc15;
+  --color-ds-yellow-500: #eab308;
+  --color-ds-yellow-600: #ca8a04;
+  --color-ds-yellow-700: #a16207;
+  --color-ds-yellow-800: #854d0e;
+  --color-ds-yellow-900: #713f12;
+  --color-ds-yellow-950: #422006;
+
+  --text-ds-xs: 0.75rem;
+  --text-ds-xs--line-height: 1rem;
+  --text-ds-xs--letter-spacing: 0.06px;
+
+  --text-ds-sm: 0.875rem;
+  --text-ds-sm--line-height: 1.25rem;
+  --text-ds-sm--letter-spacing: 0.0044rem;
+
+  --text-ds-base: 1rem;
+  --text-ds-base--line-height: 1.5rem;
+  --text-ds-base--letter-spacing: 0.005rem;
+
+  --text-ds-lg: 1.125rem;
+  --text-ds-lg--line-height: normal;
+  --text-ds-lg--letter-spacing: 0.0056rem;
+
+  --text-ds-xl: 1.25rem;
+  --text-ds-xl--line-height: normal;
+  --text-ds-xl--letter-spacing: 0.0063rem;
+
+  --text-ds-2xl: 1.5rem;
+  --text-ds-2xl--line-height: normal;
+  --text-ds-2xl--letter-spacing: 0.0075rem;
+
+  --text-ds-3xl: 1.875rem;
+  --text-ds-3xl--line-height: normal;
+  --text-ds-3xl--letter-spacing: 0.0094rem;
+
+  --text-ds-4xl: 2.25rem;
+  --text-ds-4xl--line-height: normal;
+  --text-ds-4xl--letter-spacing: 0.0112rem;
+
+  --text-ds-5xl: 3rem;
+  --text-ds-5xl--line-height: normal;
+  --text-ds-5xl--letter-spacing: 0.015rem;
+
+  --text-ds-6xl: 3.75rem;
+  --text-ds-6xl--line-height: normal;
+  --text-ds-6xl--letter-spacing: 0.015rem;
+
+  --text-ds-7xl: 72px;
+  --text-ds-7xl--line-height: normal;
+  --text-ds-7xl--letter-spacing: 0.0225rem;
+
+  --font-weight-ds-regular: 400;
+  --font-weight-ds-medium: 500;
+  --font-weight-ds-semibold: 600;
+  --font-weight-ds-bold: 700;
+
+  --shadow-ds-xs: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+  --shadow-ds-sm: 0px 1px 3px 0px rgba(10, 13, 18, 0.1), 0px 1px 2px 0px rgba(10, 13, 18, 0.06);
+  --shadow-ds-md: 0px 4px 8px -2px rgba(10, 13, 18, 0.1), 0px 2px 4px -2px rgba(10, 13, 18, 0.06);
+  --shadow-ds-lg: 0px 12px 16px -4px rgba(10, 13, 18, 0.08), 0px 4px 6px -2px rgba(10, 13, 18, 0.03);
+  --shadow-ds-xl: 0px 20px 24px -4px rgba(10, 13, 18, 0.08), 0px 8px 8px -4px rgba(10, 13, 18, 0.03);
+  --shadow-ds-2xl: 0px 24px 48px -12px rgba(10, 13, 18, 0.18);
+  --shadow-ds-3xl: 0px 32px 64px -12px rgba(10, 13, 18, 0.14);
+
+  --blur-ds-sm: 4px;
+  --blur-ds-md: 8px;
+  --blur-ds-lg: 12px;
+  --blur-ds-xl: 20px;
+}

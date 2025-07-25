@@ -24,4 +24,52 @@
   --color-ds-gray-800: #1f2937;
   --color-ds-gray-900: #111827;
   --color-ds-gray-950: #030712;
+
+  --color-ds-teal-50: #f0fdfa;
+  --color-ds-teal-100: #ccfbf1;
+  --color-ds-teal-200: #99f6e4;
+  --color-ds-teal-300: #5eead4;
+  --color-ds-teal-400: #2dd4bf;
+  --color-ds-teal-500: #14b8a6;
+  --color-ds-teal-600: #0d9488;
+  --color-ds-teal-700: #0f766e;
+  --color-ds-teal-800: #115e59;
+  --color-ds-teal-900: #134e4a;
+  --color-ds-teal-950: #042f2e;
+
+  --color-ds-blue-50: #eff6ff;
+  --color-ds-blue-100: #dbeafe;
+  --color-ds-blue-200: #bfdbfe;
+  --color-ds-blue-300: #93c5fd;
+  --color-ds-blue-400: #60a5fa;
+  --color-ds-blue-500: #3b82f6;
+  --color-ds-blue-600: #2563eb;
+  --color-ds-blue-700: #1d4ed8;
+  --color-ds-blue-800: #1e40af;
+  --color-ds-blue-900: #1e3a8a;
+  --color-ds-blue-950: #172554;
+
+  --color-ds-red-50: #fef2f2;
+  --color-ds-red-100: #fee2e2;
+  --color-ds-red-200: #fecaca;
+  --color-ds-red-300: #fca5a5;
+  --color-ds-red-400: #f87171;
+  --color-ds-red-500: #ef4444;
+  --color-ds-red-600: #dc2626;
+  --color-ds-red-700: #b91c1c;
+  --color-ds-red-800: #991b1b;
+  --color-ds-red-900: #7f1d1d;
+  --color-ds-red-950: #450a0a;
+
+  --color-ds-yellow-50: #fefce8;
+  --color-ds-yellow-100: #fef9c3;
+  --color-ds-yellow-200: #fef08a;
+  --color-ds-yellow-300: #fde047;
+  --color-ds-yellow-400: #facc15;
+  --color-ds-yellow-500: #eab308;
+  --color-ds-yellow-600: #ca8a04;
+  --color-ds-yellow-700: #a16207;
+  --color-ds-yellow-800: #854d0e;
+  --color-ds-yellow-900: #713f12;
+  --color-ds-yellow-950: #422006;
 }

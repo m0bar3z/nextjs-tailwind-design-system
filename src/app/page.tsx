@@ -1,12 +1,7 @@
-import Typography from "@/components/atoms/Typography/Typography";
-
 export default function HomePage() {
   return (
-    <div className="grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Typography weight="bold" className="bg-red-500">
-        test Typography component
-      </Typography>
-      <br />
+    <div className="min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
+      <div className="flex gap-2">New Project!</div>
     </div>
   );
 }

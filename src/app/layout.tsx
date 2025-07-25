@@ -10,6 +10,9 @@ import localFont from "next/font/local";
  * custom variables
  * prefix for tailwind classes
  *
+ * TODO: storybook
+ * TODO: readme
+ *
  */
 
 const inter = localFont({
