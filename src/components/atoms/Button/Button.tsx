@@ -16,8 +16,6 @@ interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLB
   color?: Color;
 }
 
-
-
 const Button: FC<Props> = ({ size = "small", variant = "solid", shape = "rounded", color = "primary", ...props }) => {
   const colors = useMemo<Record<Color, string>>(
     () => ({
