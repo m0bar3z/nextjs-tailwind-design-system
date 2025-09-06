@@ -1,5 +1,6 @@
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
 import Input from "@/components/atoms/FormControls/Input/Input";
+import Switch from "@/components/atoms/FormControls/Switch/Switch";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,10 @@ export default function HomePage() {
       <div className="flex w-full items-center justify-center gap-2">
         <Checkbox />
         <Checkbox variant="soft" />
+      </div>
+
+      <div className="flex w-full items-center justify-center gap-2">
+        <Switch />
       </div>
     </div>
   );

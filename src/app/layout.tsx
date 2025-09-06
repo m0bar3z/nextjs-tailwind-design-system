@@ -2,19 +2,6 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-/**
- *
- * tailwind
- * utility classes
- * modifiers
- * custom variables
- * prefix for tailwind classes
- *
- * TODO: storybook
- * TODO: readme
- *
- */
-
 const inter = localFont({
   src: [
     {

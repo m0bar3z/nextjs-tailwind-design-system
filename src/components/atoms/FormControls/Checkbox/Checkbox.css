@@ -1,6 +1,6 @@
 @reference '../../../../styles/globals.css';
 
-input[type="checkbox"] {
+.ds-checkbox {
   @apply border-ds-gray-200 size-3.5 appearance-none rounded-sm border;
   @apply focus-visible:shadow-ds-focus focus-visible:outline-0;
 
@@ -19,29 +19,29 @@ input[type="checkbox"] {
   }
 }
 
-input[type="checkbox"].solid {
+.ds-checkbox.solid {
   @apply checked:bg-ds-blue-600 checked:border-ds-blue-600 relative size-4 transition-all duration-200 ease-in-out;
   @apply disabled:border-ds-blue-300 disabled:checked:bg-ds-blue-300;
 }
 
-input[type="checkbox"].soft {
+.ds-checkbox.soft {
   @apply checked:bg-ds-blue-800/10 checked:border-ds-blue-600 relative size-4 transition-all duration-200 ease-in-out;
   @apply disabled:border-ds-blue-300;
   @apply after:bg-ds-blue-600 disabled:after:bg-ds-blue-300;
 }
 
-input[type="checkbox"].solid.success {
+.ds-checkbox.solid.success {
   @apply checked:bg-ds-teal-500 checked:border-ds-teal-500;
   @apply disabled:border-ds-teal-300 disabled:checked:bg-ds-teal-300;
 }
 
-input[type="checkbox"].soft.success {
+.ds-checkbox.soft.success {
   @apply checked:bg-ds-teal-500/10 checked:border-ds-teal-500;
   @apply after:bg-ds-teal-500;
   @apply disabled:after:bg-ds-teal-200 disabled:border-ds-teal-200;
 }
 
-input[type="checkbox"].error {
+.ds-checkbox.error {
   @apply !border-ds-red-500 after:content-none checked:bg-white focus-visible:shadow-none;
   @apply disabled:!border-ds-red-200;
 }

@@ -1,0 +1,27 @@
+@reference '../../../../styles/globals.css';
+
+.ds-switch {
+  @apply bg-ds-blue-100 relative flex h-6 w-11 cursor-pointer appearance-none items-center rounded-3xl p-0.5 transition-all disabled:pointer-events-none;
+  @apply focus-visible:shadow-ds-focus focus-visible:outline-0;
+
+  @apply after:shadow-ds-sm after:relative after:size-5 after:rounded-full after:content-[''];
+  @apply focus:after:bg-ds-blue-50 after:transition-all after:duration-200 after:ease-in-out checked:after:translate-x-[20px];
+}
+
+.ds-switch.ds-switch-solid.ds-switch-primary {
+  @apply bg-ds-gray-200 checked:bg-ds-blue-600 focus-visible:shadow-ds-focus;
+  @apply after:bg-white disabled:opacity-40;
+}
+
+.ds-switch.ds-switch-solid.ds-switch-success {
+  @apply bg-ds-gray-200 checked:bg-ds-teal-500 focus-visible:shadow-ds-teal-500/[25%];
+  @apply after:bg-white disabled:opacity-40;
+}
+
+.ds-switch.ds-switch-solid.ds-switch-error {
+  @apply bg-ds-gray-200 checked:bg-ds-red-500 focus-visible:shadow-ds-red-500/[25%];
+  @apply after:bg-white disabled:opacity-40;
+}
+
+.ds-switch.ds-switch-soft.ds-switch-primary {
+}
