@@ -1,0 +1,11 @@
+@reference '../../../../styles/globals.css';
+
+.ds-select {
+  @apply border-ds-gray-200 w-96 appearance-none rounded-lg border px-4 py-3.5 transition-shadow outline-none;
+  @apply focus:border-ds-blue-600 focus:shadow-ds-focus;
+  @apply disabled:bg-ds-gray-50 disabled:border-ds-gray-100 disabled:text-ds-gray-300 disabled:pointer-events-none;
+}
+
+option {
+  @apply p-5;
+}

@@ -1,6 +1,13 @@
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
 import Input from "@/components/atoms/FormControls/Input/Input";
+import Select from "@/components/atoms/FormControls/Select/Select";
 import Switch from "@/components/atoms/FormControls/Switch/Switch";
+
+const selectOptions = [
+  { label: "Education", value: "edu" },
+  { label: "Science", value: "sci" },
+  { label: "Art", value: "art" },
+];
 
 export default function HomePage() {
   return (
@@ -18,6 +25,10 @@ export default function HomePage() {
 
       <div className="flex w-full items-center justify-center gap-2">
         <Switch />
+      </div>
+
+      <div className="flex w-full items-center justify-center gap-2">
+        <Select options={selectOptions} />
       </div>
     </div>
   );
