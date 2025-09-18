@@ -1,0 +1,17 @@
+@reference '../../../../styles/globals.css';
+
+.ds-radio {
+  @apply border-ds-gray-200 flex size-4 appearance-none items-center justify-center rounded-full border transition-all duration-200 ease-in-out;
+  @apply focus-visible:outline-0;
+  @apply after:transition-all after:duration-200 after:ease-in-out checked:after:size-2 checked:after:rounded-full checked:after:content-[''];
+}
+
+.ds-radio.ds-radio-solid {
+  @apply checked:bg-ds-blue-600 checked:border-ds-blue-600 checked:after:bg-white;
+  @apply focus-visible:shadow-ds-focus;
+}
+
+.ds-radio.ds-radio-soft {
+  @apply checked:after:bg-ds-blue-600;
+  @apply checked:border-ds-blue-600 checked:bg-ds-blue-800/[10%] checked:border;
+}
