@@ -1,3 +1,4 @@
+import Button from "@/components/atoms/Button/Button";
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
 import Input from "@/components/atoms/FormControls/Input/Input";
 import Radio from "@/components/atoms/FormControls/Radio/Radio";
@@ -27,11 +28,15 @@ export default function HomePage() {
       </div>
 
       <div className="flex w-full items-center justify-center gap-2">
-        <Switch />
+        <Switch variant="soft" />
       </div>
 
       <div className="flex w-full items-center justify-center gap-2">
         <Select options={selectOptions} />
+      </div>
+
+      <div className="flex w-full items-center justify-center gap-2">
+        <Button>Click!</Button>
       </div>
     </div>
   );

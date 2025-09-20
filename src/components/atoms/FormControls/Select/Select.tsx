@@ -10,7 +10,7 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   options?: Option[];
 }
 
-const Select = ({ multiSelect, options, className, ...rest }: Props) => {
+const Select = ({ options, className, ...rest }: Props) => {
   return (
     <div className="relative">
       <span
