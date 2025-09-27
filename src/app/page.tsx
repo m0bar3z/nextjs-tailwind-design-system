@@ -4,6 +4,7 @@ import Input from "@/components/atoms/FormControls/Input/Input";
 import Radio from "@/components/atoms/FormControls/Radio/Radio";
 import Select from "@/components/atoms/FormControls/Select/Select";
 import Switch from "@/components/atoms/FormControls/Switch/Switch";
+import { ArrowUpToLine } from "@/icons";
 
 const selectOptions = [
   { label: "Education", value: "edu" },
@@ -36,7 +37,9 @@ export default function HomePage() {
       </div>
 
       <div className="flex w-full items-center justify-center gap-2">
-        <Button>Click!</Button>
+        <Button leadingIcon={<ArrowUpToLine />} trailingIcon={<ArrowUpToLine />}>
+          Click!
+        </Button>
       </div>
     </div>
   );

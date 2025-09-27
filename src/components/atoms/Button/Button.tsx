@@ -14,9 +14,20 @@ interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLB
   variant?: Variant;
   shape?: Shape;
   color?: Color;
+  leadingIcon?: ReactNode;
+  trailingIcon?: ReactNode;
 }
 
-const Button: FC<Props> = ({ size = "small", variant = "solid", shape = "rounded", color = "primary", ...props }) => {
+const Button: FC<Props> = ({
+  size = "small",
+  variant = "solid",
+  shape = "rounded",
+  color = "primary",
+  leadingIcon,
+  trailingIcon,
+  children,
+  ...props
+}) => {
   const colors = useMemo<Record<Color, string>>(
     () => ({
       primary: "ds-btn-primary",
@@ -69,7 +80,13 @@ const Button: FC<Props> = ({ size = "small", variant = "solid", shape = "rounded
         props.disabled && "ds-btn-disabled"
       )}
       {...props}
-    />
+    >
+      {leadingIcon ? <span>{leadingIcon}</span> : null}
+
+      {children}
+
+      {trailingIcon ? <span>{trailingIcon}</span> : null}
+    </button>
   );
 };
 
