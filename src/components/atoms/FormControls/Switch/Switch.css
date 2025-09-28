@@ -24,4 +24,6 @@
 }
 
 .ds-switch.ds-switch-soft.ds-switch-primary {
+  @apply bg-ds-gray-200 checked:bg-ds-blue-200 focus-visible:shadow-ds-focus border-ds-blue-300 border;
+  @apply after:bg-ds-blue-600 disabled:opacity-40;
 }
