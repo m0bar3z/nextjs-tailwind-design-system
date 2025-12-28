@@ -10,13 +10,21 @@ const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  resolvePluginsRelativeTo: __dirname,
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals", "next/typescript"), {
-  rules: {
-    "no-console": "warn",
-    "@typescript-eslint/no-unused-vars": "warn",
+const nextConfig = compat.extends("next/core-web-vitals", "next/typescript");
+const storybookConfig = storybook.configs["flat/recommended"];
+
+const eslintConfig = [
+  ...nextConfig,
+  {
+    rules: {
+      "no-console": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+    },
   },
-}, ...storybook.configs["flat/recommended"]];
+  ...storybookConfig,
+];
 
 export default eslintConfig;

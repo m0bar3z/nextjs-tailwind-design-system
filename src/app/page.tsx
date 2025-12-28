@@ -6,7 +6,7 @@ import Input from "@/components/atoms/FormControls/Input/Input";
 import Radio from "@/components/atoms/FormControls/Radio/Radio";
 import Select from "@/components/atoms/FormControls/Select/Select";
 import Switch from "@/components/atoms/FormControls/Switch/Switch";
-import Modal from "@/components/molecules/Modal";
+import Modal, { ModalHeader } from "@/components/molecules/Modal";
 import ArrowUpToLine from "@/icons/ArrowUpToLine";
 import { useState } from "react";
 
@@ -45,7 +45,7 @@ export default function HomePage() {
       </div>
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div>modal header</div>
+        <ModalHeader title="Modal Title" onClose={() => setIsOpen(false)} />
         <div>modal content</div>
         <div>modal modal footer</div>
       </Modal>

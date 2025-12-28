@@ -2,6 +2,9 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import Typography from "@/components/atoms/Typography/Typography";
+import clsx from "clsx";
+import "./Modal.css";
 
 interface Props {
   children: ReactNode;
@@ -9,10 +12,63 @@ interface Props {
   onClose: () => void;
 }
 
-const ModalContainer = ({ children, ...restProps }: Props) => {
+interface ModalHeaderProps {
+  title?: ReactNode;
+  onClose?: () => void;
+  className?: string;
+}
+
+const CloseIcon = () => {
   return (
-    <dialog open className="absolute top-0 flex h-dvh w-dvw items-center justify-center bg-black/[50%]">
-      <div className="flex h-[24rem] w-[36rem] flex-wrap gap-4 rounded-2xl bg-green-100 p-4">{children}</div>
+    <svg
+      className="ds-modal-close-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  );
+};
+
+export const ModalHeader = ({ title, onClose, className }: ModalHeaderProps) => {
+  return (
+    <div className={clsx("ds-modal-header", className)}>
+      {title && (
+        <Typography variant="xl" weight="semibold" className="ds-modal-header-title" Tag="h2">
+          {title}
+        </Typography>
+      )}
+      {onClose && (
+        <button type="button" onClick={onClose} className="ds-modal-close-button" aria-label="Close modal">
+          <CloseIcon />
+        </button>
+      )}
+    </div>
+  );
+};
+
+const ModalContainer = ({ children, onClose, ...restProps }: Props) => {
+  return (
+    <dialog
+      open
+      className="absolute top-0 flex h-dvh w-dvw items-center justify-center bg-black/[50%]"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
+      <div className="ds-modal flex h-[24rem] w-[36rem] flex-col rounded-2xl overflow-hidden">
+        {children}
+      </div>
     </dialog>
   );
 };
