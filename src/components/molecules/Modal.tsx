@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
-import { createPortal } from "react-dom";
 import Typography from "@/components/atoms/Typography/Typography";
 import clsx from "clsx";
+import { useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import "./Modal.css";
 
 interface Props {
@@ -60,15 +60,13 @@ const ModalContainer = ({ children, onClose, ...restProps }: Props) => {
     <dialog
       open
       className="absolute top-0 flex h-dvh w-dvw items-center justify-center bg-black/[50%]"
-      onClick={(e) => {
+      onClick={e => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
     >
-      <div className="ds-modal flex h-[24rem] w-[36rem] flex-col rounded-2xl overflow-hidden">
-        {children}
-      </div>
+      <div className="ds-modal flex h-[24rem] w-[36rem] flex-col overflow-hidden rounded-2xl">{children}</div>
     </dialog>
   );
 };
@@ -77,6 +75,7 @@ const Modal = (props: Props) => {
   const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsClient(true);
   }, []);
 
