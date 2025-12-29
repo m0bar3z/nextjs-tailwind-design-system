@@ -1,1 +1,1 @@
-npm run lint || echo "⚠️  Linting failed but allowing commit. Please fix linting issues."
+npm run lint
