@@ -2,7 +2,7 @@
 
 import Typography from "@/components/atoms/Typography/Typography";
 import clsx from "clsx";
-import { useEffect, useState, type ReactNode } from "react";
+import { startTransition, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.css";
 
@@ -10,11 +10,22 @@ interface Props {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
+  size?: "sm" | "md" | "lg" | "xl" | "full";
 }
 
 interface ModalHeaderProps {
   title?: ReactNode;
   onClose?: () => void;
+  className?: string;
+}
+
+interface ModalBodyProps {
+  children: ReactNode;
+  className?: string;
+}
+
+interface ModalFooterProps {
+  children: ReactNode;
   className?: string;
 }
 
@@ -55,31 +66,134 @@ export const ModalHeader = ({ title, onClose, className }: ModalHeaderProps) => 
   );
 };
 
-const ModalContainer = ({ children, onClose, ...restProps }: Props) => {
+export const ModalBody = ({ children, className }: ModalBodyProps) => {
+  return <div className={clsx("ds-modal-body", className)}>{children}</div>;
+};
+
+export const ModalFooter = ({ children, className }: ModalFooterProps) => {
+  return <div className={clsx("ds-modal-footer", className)}>{children}</div>;
+};
+
+const ModalContainer = ({ children, onClose, size = "md" }: Props) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [isAnimating] = useState(true);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  useEffect(() => {
+    if (modalRef.current) {
+      const focusableElements = modalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      const handleTabKey = (e: KeyboardEvent) => {
+        if (e.key !== "Tab") return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      };
+
+      firstElement?.focus();
+      document.addEventListener("keydown", handleTabKey);
+
+      return () => {
+        document.removeEventListener("keydown", handleTabKey);
+      };
+    }
+  }, []);
+
+  const sizeClasses = {
+    sm: "ds-modal-sm",
+    md: "ds-modal-md",
+    lg: "ds-modal-lg",
+    xl: "ds-modal-xl",
+    full: "ds-modal-full",
+  };
+
   return (
-    <dialog
-      open
-      className="absolute top-0 flex h-dvh w-dvw items-center justify-center bg-black/[50%]"
+    <div
+      className={clsx("ds-modal-backdrop", isAnimating && "ds-modal-backdrop-enter")}
       onClick={e => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
     >
-      <div className="ds-modal flex h-[24rem] w-[36rem] flex-col overflow-hidden rounded-2xl">{children}</div>
-    </dialog>
+      <div
+        ref={modalRef}
+        className={clsx("ds-modal", sizeClasses[size], isAnimating && "ds-modal-enter")}
+        role="dialog"
+        aria-modal="true"
+      >
+        {children}
+      </div>
+    </div>
   );
 };
 
 const Modal = (props: Props) => {
-  const [isClient, setIsClient] = useState<boolean>(false);
+  const [shouldRender, setShouldRender] = useState<boolean>(props.isOpen);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const prevIsOpenRef = useRef<boolean>(props.isOpen);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsClient(true);
-  }, []);
+    if (props.isOpen && !prevIsOpenRef.current) {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      startTransition(() => {
+        setShouldRender(true);
+      });
+    }
 
-  return isClient && props.isOpen ? createPortal(<ModalContainer {...props} />, document.body) : null;
+    if (!props.isOpen && prevIsOpenRef.current) {
+      timeoutRef.current = setTimeout(() => {
+        startTransition(() => {
+          setShouldRender(false);
+        });
+      }, 300);
+    }
+
+    prevIsOpenRef.current = props.isOpen;
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, [props.isOpen]);
+
+  if (!shouldRender) return null;
+
+  return createPortal(<ModalContainer {...props} />, document.body);
 };
 
 export default Modal;

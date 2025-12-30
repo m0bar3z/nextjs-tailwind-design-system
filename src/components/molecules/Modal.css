@@ -1,32 +1,112 @@
 @reference '../../styles/globals.css';
 
-.ds-modal {
-  @apply shadow-ds-xl bg-white;
+/* Backdrop */
+.ds-modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+  @apply bg-black/60 backdrop-blur-sm;
+  @apply transition-opacity duration-300 ease-out;
 }
 
+.ds-modal-backdrop-enter {
+  @apply opacity-0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.ds-modal {
+  @apply shadow-ds-xl relative flex flex-col overflow-hidden rounded-xl bg-white;
+  @apply transition-all duration-300 ease-out;
+  @apply max-h-[90vh] w-full;
+}
+
+.ds-modal-enter {
+  @apply translate-y-4 scale-95 opacity-0;
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modal Sizes */
+.ds-modal-sm {
+  @apply max-w-sm;
+}
+
+.ds-modal-md {
+  @apply max-w-md;
+}
+
+.ds-modal-lg {
+  @apply max-w-lg;
+}
+
+.ds-modal-xl {
+  @apply max-w-xl;
+}
+
+.ds-modal-full {
+  @apply mx-4 max-w-full;
+}
+
+/* Header */
 .ds-modal-header {
   @apply border-ds-gray-200 flex items-center justify-between border-b px-6 py-4;
+  @apply flex-shrink-0;
 }
 
 .ds-modal-header-title {
-  @apply flex-1;
+  @apply flex-1 pr-4;
 }
 
 .ds-modal-close-button {
   @apply flex h-8 w-8 items-center justify-center rounded-lg;
-  @apply text-ds-gray-500 hover:text-ds-gray-700 hover:bg-ds-gray-100;
-  @apply focus:ring-ds-blue-500 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none;
-  @apply active:bg-ds-gray-200;
+  @apply text-ds-gray-400 hover:text-ds-gray-600 hover:bg-ds-gray-100;
+  @apply focus:ring-ds-blue-500 transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none;
+  @apply active:bg-ds-gray-200 active:scale-95;
 }
 
 .ds-modal-close-icon {
   @apply h-5 w-5;
 }
 
+/* Body */
 .ds-modal-body {
   @apply px-6 py-4;
+  @apply flex-1 overflow-y-auto;
+  @apply text-ds-gray-700;
 }
 
+/* Footer */
 .ds-modal-footer {
   @apply border-ds-gray-200 flex items-center justify-end gap-3 border-t px-6 py-4;
+  @apply flex-shrink-0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ds-modal {
+    @apply mx-4 max-w-full;
+    @apply max-h-[95vh];
+  }
+
+  .ds-modal-header {
+    @apply px-4 py-3;
+  }
+
+  .ds-modal-body {
+    @apply px-4 py-3;
+  }
+
+  .ds-modal-footer {
+    @apply px-4 py-3;
+  }
 }

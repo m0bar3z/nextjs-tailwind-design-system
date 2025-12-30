@@ -6,7 +6,7 @@ import Input from "@/components/atoms/FormControls/Input/Input";
 import Radio from "@/components/atoms/FormControls/Radio/Radio";
 import Select from "@/components/atoms/FormControls/Select/Select";
 import Switch from "@/components/atoms/FormControls/Switch/Switch";
-import Modal, { ModalHeader } from "@/components/molecules/Modal";
+import Modal, { ModalBody, ModalFooter, ModalHeader } from "@/components/molecules/Modal";
 import ArrowUpToLine from "@/icons/ArrowUpToLine";
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ const selectOptions = [
 ];
 
 export default function HomePage() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <div className="container m-auto flex h-full flex-col flex-wrap items-center gap-6 p-6">
@@ -42,12 +42,23 @@ export default function HomePage() {
         <Button leadingIcon={<ArrowUpToLine />} trailingIcon={<ArrowUpToLine />}>
           Click!
         </Button>
+        <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
       </div>
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} size="md">
         <ModalHeader title="Modal Title" onClose={() => setIsOpen(false)} />
-        <div>modal content</div>
-        <div>modal modal footer</div>
+        <ModalBody>
+          <p className="text-ds-gray-600">
+            This is a redesigned modal component inspired by Preline UI. It features smooth animations, backdrop blur,
+            and improved accessibility.
+          </p>
+        </ModalBody>
+        <ModalFooter>
+          <Button variant="outlined" onClick={() => setIsOpen(false)}>
+            Cancel
+          </Button>
+          <Button onClick={() => setIsOpen(false)}>Confirm</Button>
+        </ModalFooter>
       </Modal>
     </div>
   );
