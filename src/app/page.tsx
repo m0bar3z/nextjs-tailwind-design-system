@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/atoms/Button/Button";
+import Card from "@/components/atoms/Card/Card";
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
 import Input from "@/components/atoms/FormControls/Input/Input";
 import Radio from "@/components/atoms/FormControls/Radio/Radio";
@@ -140,6 +141,25 @@ export default function HomePage() {
             <ComponentCard title="Select Dropdown" description="Dropdown selection component with custom styling.">
               <div className="w-full">
                 <Select options={selectOptions} />
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title="Card Component"
+              description="Flexible card component with header, body, and footer sections."
+              className="lg:col-span-2"
+            >
+              <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+                <Card title="Card with Footer" subtitle="Subtitle text" footer={<Button size="small">Action</Button>}>
+                  <Typography variant="sm" className="text-ds-gray-600">
+                    This is a card component with title, subtitle, content, and footer sections.
+                  </Typography>
+                </Card>
+                <Card title="Simple Card">
+                  <Typography variant="sm" className="text-ds-gray-600">
+                    A simple card with just a title and content. Perfect for displaying information.
+                  </Typography>
+                </Card>
               </div>
             </ComponentCard>
 

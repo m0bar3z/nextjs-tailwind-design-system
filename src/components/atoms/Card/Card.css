@@ -1,0 +1,29 @@
+@reference '../../../styles/globals.css';
+
+.ds-card {
+  @apply rounded-xl border border-ds-gray-200 bg-white shadow-ds-sm;
+  @apply flex flex-col overflow-hidden;
+}
+
+.ds-card-header {
+  @apply px-6 py-4 border-b border-ds-gray-200;
+}
+
+.ds-card-title {
+  @apply text-ds-gray-900;
+}
+
+.ds-card-subtitle {
+  @apply text-ds-gray-500 mt-1;
+}
+
+.ds-card-body {
+  @apply px-6 py-4 flex-1;
+  @apply text-ds-gray-700;
+}
+
+.ds-card-footer {
+  @apply px-6 py-4 border-t border-ds-gray-200;
+  @apply bg-ds-gray-50;
+}
+
