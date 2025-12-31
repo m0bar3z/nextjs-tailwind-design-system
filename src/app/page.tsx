@@ -1,14 +1,14 @@
 "use client";
 
 import Button from "@/components/atoms/Button/Button";
-import Card from "@/components/atoms/Card/Card";
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
 import Input from "@/components/atoms/FormControls/Input/Input";
 import Radio from "@/components/atoms/FormControls/Radio/Radio";
 import Select from "@/components/atoms/FormControls/Select/Select";
 import Switch from "@/components/atoms/FormControls/Switch/Switch";
 import Typography from "@/components/atoms/Typography/Typography";
-import Modal, { ModalBody, ModalFooter, ModalHeader } from "@/components/molecules/Modal";
+import Card from "@/components/molecules/Card/Card";
+import Modal, { ModalBody, ModalFooter, ModalHeader } from "@/components/molecules/Modal/Modal";
 import ArrowUpToLine from "@/icons/ArrowUpToLine";
 import { useState, type ReactNode } from "react";
 
