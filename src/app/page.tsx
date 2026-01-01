@@ -1,5 +1,6 @@
 "use client";
 
+import Badge from "@/components/atoms/Badge/Badge";
 import Button from "@/components/atoms/Button/Button";
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
 import Input from "@/components/atoms/FormControls/Input/Input";
@@ -50,6 +51,7 @@ const ComponentCard = ({
 
 export default function HomePage() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [badgeClickCount, setBadgeClickCount] = useState<number>(0);
 
   return (
     <div className="from-ds-slate-50 to-ds-blue-50 min-h-screen bg-gradient-to-br via-white">
@@ -141,6 +143,66 @@ export default function HomePage() {
             <ComponentCard title="Select Dropdown" description="Dropdown selection component with custom styling.">
               <div className="w-full">
                 <Select options={selectOptions} />
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title="Badges"
+              description="Badge components with variants, colors, sizes, icons, and click handlers."
+            >
+              <div className="w-full space-y-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                    Variants:
+                  </Typography>
+                  <Badge text="Solid" variant="solid" color="primary" />
+                  <Badge text="Outlined" variant="outlined" color="primary" />
+                  <Badge text="Soft" variant="soft" color="primary" />
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                    Colors:
+                  </Typography>
+                  <Badge text="Primary" color="primary" />
+                  <Badge text="Success" color="success" />
+                  <Badge text="Error" color="error" />
+                  <Badge text="Warning" color="warning" />
+                  <Badge text="Secondary" color="secondary" />
+                  <Badge text="Dark" color="dark" />
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                    Sizes:
+                  </Typography>
+                  <Badge text="Small" size="small" />
+                  <Badge text="Normal" size="normal" />
+                  <Badge text="Large" size="large" />
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                    With Icons:
+                  </Typography>
+                  <Badge text="With Icon" icon={<ArrowUpToLine />} color="primary" />
+                  <Badge text="Success" icon={<ArrowUpToLine />} color="success" variant="soft" />
+                  <Badge text="Error" icon={<ArrowUpToLine />} color="error" variant="outlined" />
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                    Clickable:
+                  </Typography>
+                  <Badge
+                    text={`Clicked: ${badgeClickCount}`}
+                    icon={<ArrowUpToLine />}
+                    color="primary"
+                    onClick={() => setBadgeClickCount(prev => prev + 1)}
+                  />
+                  <Badge
+                    text="Click me!"
+                    color="success"
+                    variant="soft"
+                    onClick={() => alert("Badge clicked!")}
+                  />
+                </div>
               </div>
             </ComponentCard>
 

@@ -1,0 +1,196 @@
+@reference '../../../styles/globals.css';
+
+.ds-badge {
+  @apply inline-flex items-center gap-1.5 font-medium rounded-lg;
+  @apply transition-colors;
+}
+
+.ds-badge-clickable {
+  @apply cursor-pointer focus:outline-none;
+  @apply focus:ring-2 focus:ring-offset-2;
+}
+
+.ds-badge-small {
+  @apply px-2 py-0.5 text-xs;
+}
+
+.ds-badge-normal {
+  @apply px-2.5 py-1 text-sm;
+}
+
+.ds-badge-large {
+  @apply px-3 py-1.5 text-base;
+}
+
+.ds-badge-icon {
+  @apply flex items-center;
+}
+
+.ds-badge-icon svg {
+  @apply h-3.5 w-3.5;
+}
+
+.ds-badge-small .ds-badge-icon svg {
+  @apply h-3 w-3;
+}
+
+.ds-badge-large .ds-badge-icon svg {
+  @apply h-4 w-4;
+}
+
+.ds-badge-text {
+  @apply leading-tight;
+}
+
+.ds-badge-rounded {
+  @apply rounded-lg;
+}
+
+.ds-badge-pilled {
+  @apply rounded-full;
+}
+
+.ds-badge-solid.ds-badge-primary {
+  @apply bg-ds-blue-600 text-white;
+}
+
+.ds-badge-clickable.ds-badge-solid.ds-badge-primary:hover {
+  @apply bg-ds-blue-700;
+}
+
+.ds-badge-solid.ds-badge-secondary {
+  @apply bg-ds-gray-500 text-white;
+}
+
+.ds-badge-clickable.ds-badge-solid.ds-badge-secondary:hover {
+  @apply bg-ds-gray-600;
+}
+
+.ds-badge-solid.ds-badge-success {
+  @apply bg-ds-teal-500 text-white;
+}
+
+.ds-badge-clickable.ds-badge-solid.ds-badge-success:hover {
+  @apply bg-ds-teal-600;
+}
+
+.ds-badge-solid.ds-badge-error {
+  @apply bg-ds-red-500 text-white;
+}
+
+.ds-badge-clickable.ds-badge-solid.ds-badge-error:hover {
+  @apply bg-ds-red-600;
+}
+
+.ds-badge-solid.ds-badge-warning {
+  @apply bg-ds-yellow-500 text-white;
+}
+
+.ds-badge-clickable.ds-badge-solid.ds-badge-warning:hover {
+  @apply bg-ds-yellow-600;
+}
+
+.ds-badge-solid.ds-badge-dark {
+  @apply bg-ds-gray-800 text-white;
+}
+
+.ds-badge-clickable.ds-badge-solid.ds-badge-dark:hover {
+  @apply bg-ds-gray-900;
+}
+
+.ds-badge-outlined.ds-badge-primary {
+  @apply border border-ds-blue-600 text-ds-blue-600 bg-transparent;
+}
+
+.ds-badge-clickable.ds-badge-outlined.ds-badge-primary:hover {
+  @apply bg-ds-blue-50 border-ds-blue-700 text-ds-blue-700;
+}
+
+.ds-badge-outlined.ds-badge-secondary {
+  @apply border border-ds-gray-500 text-ds-gray-500 bg-transparent;
+}
+
+.ds-badge-clickable.ds-badge-outlined.ds-badge-secondary:hover {
+  @apply bg-ds-gray-50 border-ds-gray-600 text-ds-gray-600;
+}
+
+.ds-badge-outlined.ds-badge-success {
+  @apply border border-ds-teal-500 text-ds-teal-500 bg-transparent;
+}
+
+.ds-badge-clickable.ds-badge-outlined.ds-badge-success:hover {
+  @apply bg-ds-teal-50 border-ds-teal-600 text-ds-teal-600;
+}
+
+.ds-badge-outlined.ds-badge-error {
+  @apply border border-ds-red-500 text-ds-red-500 bg-transparent;
+}
+
+.ds-badge-clickable.ds-badge-outlined.ds-badge-error:hover {
+  @apply bg-ds-red-50 border-ds-red-600 text-ds-red-600;
+}
+
+.ds-badge-outlined.ds-badge-warning {
+  @apply border border-ds-yellow-500 text-ds-yellow-500 bg-transparent;
+}
+
+.ds-badge-clickable.ds-badge-outlined.ds-badge-warning:hover {
+  @apply bg-ds-yellow-50 border-ds-yellow-600 text-ds-yellow-600;
+}
+
+.ds-badge-outlined.ds-badge-dark {
+  @apply border border-ds-gray-800 text-ds-gray-800 bg-transparent;
+}
+
+.ds-badge-clickable.ds-badge-outlined.ds-badge-dark:hover {
+  @apply bg-ds-gray-50 border-ds-gray-900 text-ds-gray-900;
+}
+
+.ds-badge-soft.ds-badge-primary {
+  @apply bg-ds-blue-100 text-ds-blue-700;
+}
+
+.ds-badge-clickable.ds-badge-soft.ds-badge-primary:hover {
+  @apply bg-ds-blue-200;
+}
+
+.ds-badge-soft.ds-badge-secondary {
+  @apply bg-ds-gray-100 text-ds-gray-700;
+}
+
+.ds-badge-clickable.ds-badge-soft.ds-badge-secondary:hover {
+  @apply bg-ds-gray-200;
+}
+
+.ds-badge-soft.ds-badge-success {
+  @apply bg-ds-teal-100 text-ds-teal-700;
+}
+
+.ds-badge-clickable.ds-badge-soft.ds-badge-success:hover {
+  @apply bg-ds-teal-200;
+}
+
+.ds-badge-soft.ds-badge-error {
+  @apply bg-ds-red-100 text-ds-red-700;
+}
+
+.ds-badge-clickable.ds-badge-soft.ds-badge-error:hover {
+  @apply bg-ds-red-200;
+}
+
+.ds-badge-soft.ds-badge-warning {
+  @apply bg-ds-yellow-100 text-ds-yellow-700;
+}
+
+.ds-badge-clickable.ds-badge-soft.ds-badge-warning:hover {
+  @apply bg-ds-yellow-200;
+}
+
+.ds-badge-soft.ds-badge-dark {
+  @apply bg-ds-gray-200 text-ds-gray-900;
+}
+
+.ds-badge-clickable.ds-badge-soft.ds-badge-dark:hover {
+  @apply bg-ds-gray-300;
+}
+
