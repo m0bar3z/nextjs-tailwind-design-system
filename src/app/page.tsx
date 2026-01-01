@@ -10,44 +10,16 @@ import Switch from "@/components/atoms/FormControls/Switch/Switch";
 import Typography from "@/components/atoms/Typography/Typography";
 import Card from "@/components/molecules/Card/Card";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "@/components/molecules/Modal/Modal";
+import ShowcaseCard from "@/components/molecules/ShowcaseCard/ShowcaseCard";
 import ArrowUpToLine from "@/icons/ArrowUpToLine";
-import { useState, type ReactNode } from "react";
+
+import { useState } from "react";
 
 const selectOptions = [
   { label: "Education", value: "edu" },
   { label: "Science", value: "sci" },
   { label: "Art", value: "art" },
 ];
-
-const ComponentCard = ({
-  title,
-  description,
-  children,
-  className,
-}: {
-  title: string;
-  description?: string;
-  children: ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div
-      className={`group border-ds-gray-200 shadow-ds-sm hover:shadow-ds-md rounded-xl border bg-white p-6 transition-all ${className || ""}`}
-    >
-      <div className="mb-4">
-        <Typography variant="lg" weight="semibold" className="text-ds-gray-900">
-          {title}
-        </Typography>
-        {description && (
-          <Typography variant="sm" className="text-ds-gray-500 mt-1">
-            {description}
-          </Typography>
-        )}
-      </div>
-      <div className="flex flex-wrap items-center gap-3">{children}</div>
-    </div>
-  );
-};
 
 export default function HomePage() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -85,10 +57,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <ComponentCard
-              title="Buttons"
-              description="Various button styles, sizes, and variants to fit any use case."
-            >
+            <ShowcaseCard title="Buttons" description="Various button styles, sizes, and variants to fit any use case.">
               <Button size="small">Small</Button>
               <Button size="normal">Normal</Button>
               <Button size="large">Large</Button>
@@ -98,17 +67,17 @@ export default function HomePage() {
               <Button color="success">Success</Button>
               <Button color="error">Error</Button>
               <Button leadingIcon={<ArrowUpToLine />}>With Icon</Button>
-            </ComponentCard>
+            </ShowcaseCard>
 
-            <ComponentCard title="Input Fields" description="Text input components with multiple styles and states.">
+            <ShowcaseCard title="Input Fields" description="Text input components with multiple styles and states.">
               <div className="w-full space-y-3">
                 <Input variant="bordered" placeholder="Bordered input" />
                 <Input variant="light" placeholder="Light input" />
                 <Input variant="underline" placeholder="Underline input" />
               </div>
-            </ComponentCard>
+            </ShowcaseCard>
 
-            <ComponentCard
+            <ShowcaseCard
               title="Form Controls"
               description="Checkboxes, radio buttons, and switches for form interactions."
             >
@@ -138,21 +107,21 @@ export default function HomePage() {
                   <Typography variant="sm">Toggle switch</Typography>
                 </div>
               </div>
-            </ComponentCard>
+            </ShowcaseCard>
 
-            <ComponentCard title="Select Dropdown" description="Dropdown selection component with custom styling.">
+            <ShowcaseCard title="Select Dropdown" description="Dropdown selection component with custom styling.">
               <div className="w-full">
                 <Select options={selectOptions} />
               </div>
-            </ComponentCard>
+            </ShowcaseCard>
 
-            <ComponentCard
+            <ShowcaseCard
               title="Badges"
               description="Badge components with variants, colors, sizes, icons, and click handlers."
             >
               <div className="w-full space-y-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
                     Variants:
                   </Typography>
                   <Badge text="Solid" variant="solid" color="primary" />
@@ -160,7 +129,7 @@ export default function HomePage() {
                   <Badge text="Soft" variant="soft" color="primary" />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
                     Colors:
                   </Typography>
                   <Badge text="Primary" color="primary" />
@@ -171,7 +140,7 @@ export default function HomePage() {
                   <Badge text="Dark" color="dark" />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
                     Sizes:
                   </Typography>
                   <Badge text="Small" size="small" />
@@ -179,7 +148,7 @@ export default function HomePage() {
                   <Badge text="Large" size="large" />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
                     With Icons:
                   </Typography>
                   <Badge text="With Icon" icon={<ArrowUpToLine />} color="primary" />
@@ -187,7 +156,7 @@ export default function HomePage() {
                   <Badge text="Error" icon={<ArrowUpToLine />} color="error" variant="outlined" />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Typography variant="sm" weight="medium" className="w-full text-ds-gray-700">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
                     Clickable:
                   </Typography>
                   <Badge
@@ -196,17 +165,12 @@ export default function HomePage() {
                     color="primary"
                     onClick={() => setBadgeClickCount(prev => prev + 1)}
                   />
-                  <Badge
-                    text="Click me!"
-                    color="success"
-                    variant="soft"
-                    onClick={() => alert("Badge clicked!")}
-                  />
+                  <Badge text="Click me!" color="success" variant="soft" onClick={() => alert("Badge clicked!")} />
                 </div>
               </div>
-            </ComponentCard>
+            </ShowcaseCard>
 
-            <ComponentCard
+            <ShowcaseCard
               title="Card Component"
               description="Flexible card component with header, body, and footer sections."
               className="lg:col-span-2"
@@ -223,9 +187,9 @@ export default function HomePage() {
                   </Typography>
                 </Card>
               </div>
-            </ComponentCard>
+            </ShowcaseCard>
 
-            <ComponentCard
+            <ShowcaseCard
               title="Modal Dialog"
               description="Accessible modal component with smooth animations and backdrop blur."
               className="lg:col-span-2"
@@ -236,7 +200,7 @@ export default function HomePage() {
               <Typography variant="sm" className="text-ds-gray-500">
                 Click the button above to see the modal in action
               </Typography>
-            </ComponentCard>
+            </ShowcaseCard>
           </div>
 
           <div className="border-ds-gray-200 from-ds-blue-50 to-ds-teal-50 mt-12 rounded-xl border bg-gradient-to-r p-8 text-center">
