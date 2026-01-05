@@ -1,0 +1,105 @@
+@reference '../../../styles/globals.css';
+
+.ds-alert {
+  @apply rounded-lg border p-4;
+  @apply flex items-start;
+}
+
+.ds-alert-content {
+  @apply flex w-full items-start justify-between gap-3;
+}
+
+.ds-alert-text {
+  @apply flex-1;
+}
+
+.ds-alert-title {
+  @apply mb-1;
+}
+
+.ds-alert-subtitle {
+  @apply mt-1;
+}
+
+.ds-alert .ds-alert-close-button {
+  @apply flex-shrink-0 cursor-pointer;
+  @apply min-w-0 !p-1 h-6 w-6;
+  @apply bg-transparent border-0;
+}
+
+.ds-alert .ds-alert-close-button:hover {
+  @apply bg-black/5;
+}
+
+.ds-alert .ds-alert-close-button:active {
+  @apply bg-black/10;
+}
+
+.ds-alert-close-icon {
+  @apply h-4 w-4;
+}
+
+.ds-alert-success {
+  @apply border-ds-teal-200 bg-ds-teal-50;
+}
+
+.ds-alert-success .ds-alert-title {
+  @apply text-ds-teal-900;
+}
+
+.ds-alert-success .ds-alert-subtitle {
+  @apply text-ds-teal-700;
+}
+
+.ds-alert-success .ds-alert-close-button {
+  @apply text-ds-teal-600 focus:ring-ds-teal-500;
+}
+
+.ds-alert-info {
+  @apply border-ds-blue-200 bg-ds-blue-50;
+}
+
+.ds-alert-info .ds-alert-title {
+  @apply text-ds-blue-900;
+}
+
+.ds-alert-info .ds-alert-subtitle {
+  @apply text-ds-blue-700;
+}
+
+.ds-alert-info .ds-alert-close-button {
+  @apply text-ds-blue-600 focus:ring-ds-blue-500;
+}
+
+.ds-alert-warning {
+  @apply border-ds-yellow-200 bg-ds-yellow-50;
+}
+
+.ds-alert-warning .ds-alert-title {
+  @apply text-ds-yellow-900;
+}
+
+.ds-alert-warning .ds-alert-subtitle {
+  @apply text-ds-yellow-700;
+}
+
+.ds-alert-warning .ds-alert-close-button {
+  @apply text-ds-yellow-600 focus:ring-ds-yellow-500;
+}
+
+.ds-alert-error {
+  @apply border-ds-red-200 bg-ds-red-50;
+}
+
+.ds-alert-error .ds-alert-title {
+  @apply text-ds-red-900;
+}
+
+.ds-alert-error .ds-alert-subtitle {
+  @apply text-ds-red-700;
+}
+
+.ds-alert-error .ds-alert-close-button {
+  @apply text-ds-red-600 focus:ring-ds-red-500;
+}
+

@@ -1,5 +1,6 @@
 "use client";
 
+import Alert from "@/components/atoms/Alert/Alert";
 import Badge from "@/components/atoms/Badge/Badge";
 import Button from "@/components/atoms/Button/Button";
 import Checkbox from "@/components/atoms/FormControls/Checkbox/Checkbox";
@@ -24,6 +25,12 @@ const selectOptions = [
 export default function HomePage() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [badgeClickCount, setBadgeClickCount] = useState<number>(0);
+  const [alerts, setAlerts] = useState<Record<string, boolean>>({
+    success: true,
+    info: true,
+    warning: true,
+    error: true,
+  });
 
   return (
     <div className="from-ds-slate-50 to-ds-blue-50 min-h-screen bg-gradient-to-br via-white">
@@ -167,6 +174,43 @@ export default function HomePage() {
                   />
                   <Badge text="Click me!" color="success" variant="soft" onClick={() => alert("Badge clicked!")} />
                 </div>
+              </div>
+            </ShowcaseCard>
+
+            <ShowcaseCard title="Alerts" description="Alert components with variants and dismissible close button.">
+              <div className="w-full space-y-3">
+                {alerts.success && (
+                  <Alert
+                    title="Success alert"
+                    subtitle="This is a success alert with a close button."
+                    variant="success"
+                    onClose={() => setAlerts(prev => ({ ...prev, success: false }))}
+                  />
+                )}
+                {alerts.info && (
+                  <Alert
+                    title="Info alert"
+                    subtitle="This is an info alert with a close button."
+                    variant="info"
+                    onClose={() => setAlerts(prev => ({ ...prev, info: false }))}
+                  />
+                )}
+                {alerts.warning && (
+                  <Alert
+                    title="Warning alert"
+                    subtitle="This is a warning alert with a close button."
+                    variant="warning"
+                    onClose={() => setAlerts(prev => ({ ...prev, warning: false }))}
+                  />
+                )}
+                {alerts.error && (
+                  <Alert
+                    title="Error alert"
+                    subtitle="This is an error alert with a close button."
+                    variant="error"
+                    onClose={() => setAlerts(prev => ({ ...prev, error: false }))}
+                  />
+                )}
               </div>
             </ShowcaseCard>
 

@@ -33,4 +33,3 @@ const ShowcaseCard = ({ title, description, children, className }: Props) => {
 };
 
 export default ShowcaseCard;
-

@@ -1,5 +1,5 @@
-import { FC, memo, ReactNode, useMemo } from "react";
 import clsx from "clsx";
+import { FC, memo, ReactNode, useMemo } from "react";
 import "./Badge.css";
 
 type Size = "small" | "normal" | "large";
@@ -78,4 +78,3 @@ const Badge: FC<Props> = ({
 };
 
 export default memo(Badge);
-
