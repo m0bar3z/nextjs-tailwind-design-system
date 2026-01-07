@@ -12,6 +12,7 @@ import Typography from "@/components/atoms/Typography/Typography";
 import Card from "@/components/molecules/Card/Card";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "@/components/molecules/Modal/Modal";
 import ShowcaseCard from "@/components/molecules/ShowcaseCard/ShowcaseCard";
+import Tooltip from "@/components/molecules/Tooltip/Tooltip";
 import ArrowUpToLine from "@/icons/ArrowUpToLine";
 
 import { useState } from "react";
@@ -230,6 +231,60 @@ export default function HomePage() {
                     A simple card with just a title and content. Perfect for displaying information.
                   </Typography>
                 </Card>
+              </div>
+            </ShowcaseCard>
+
+            <ShowcaseCard
+              title="Tooltips"
+              description="Tooltip component with variants and multiple placement options."
+              className="lg:col-span-2"
+            >
+              <div className="w-full space-y-4">
+                <div className="flex flex-wrap items-center gap-3">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
+                    Variants:
+                  </Typography>
+                  <Tooltip content="Default tooltip" variant="default">
+                    <Button size="small">Default</Button>
+                  </Tooltip>
+                  <Tooltip content="Success tooltip" variant="success">
+                    <Button size="small" color="success">Success</Button>
+                  </Tooltip>
+                  <Tooltip content="Info tooltip" variant="info">
+                    <Button size="small" color="primary">Info</Button>
+                  </Tooltip>
+                  <Tooltip content="Warning tooltip" variant="warning">
+                    <Button size="small" color="warning">Warning</Button>
+                  </Tooltip>
+                  <Tooltip content="Error tooltip" variant="error">
+                    <Button size="small" color="error">Error</Button>
+                  </Tooltip>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
+                    Placements:
+                  </Typography>
+                  <Tooltip content="Top placement" placement="top">
+                    <Button size="small">Top</Button>
+                  </Tooltip>
+                  <Tooltip content="Bottom placement" placement="bottom">
+                    <Button size="small">Bottom</Button>
+                  </Tooltip>
+                  <Tooltip content="Left placement" placement="left">
+                    <Button size="small">Left</Button>
+                  </Tooltip>
+                  <Tooltip content="Right placement" placement="right">
+                    <Button size="small">Right</Button>
+                  </Tooltip>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700 w-full">
+                    Hover over buttons to see tooltips:
+                  </Typography>
+                  <Tooltip content="Hover to see this tooltip" variant="info" placement="top">
+                    <Badge text="Hover me" icon={<ArrowUpToLine />} color="primary" />
+                  </Tooltip>
+                </div>
               </div>
             </ShowcaseCard>
 

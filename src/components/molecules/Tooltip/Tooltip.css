@@ -1,0 +1,252 @@
+@reference '../../../styles/globals.css';
+
+.ds-tooltip-trigger {
+  @apply inline-block;
+}
+
+.ds-tooltip {
+  @apply z-50 max-w-xs rounded-lg px-3 py-2 shadow-ds-lg;
+  @apply pointer-events-none;
+  @apply opacity-0 transition-opacity duration-200;
+  animation: tooltipFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ds-tooltip-content {
+  @apply break-words;
+}
+
+.ds-tooltip-default {
+  @apply bg-ds-gray-900;
+}
+
+.ds-tooltip-default .ds-tooltip-content {
+  @apply text-white;
+}
+
+.ds-tooltip-success {
+  @apply bg-ds-teal-600;
+}
+
+.ds-tooltip-success .ds-tooltip-content {
+  @apply text-white;
+}
+
+.ds-tooltip-info {
+  @apply bg-ds-blue-600;
+}
+
+.ds-tooltip-info .ds-tooltip-content {
+  @apply text-white;
+}
+
+.ds-tooltip-warning {
+  @apply bg-ds-yellow-600;
+}
+
+.ds-tooltip-warning .ds-tooltip-content {
+  @apply text-white;
+}
+
+.ds-tooltip-error {
+  @apply bg-ds-red-600;
+}
+
+.ds-tooltip-error .ds-tooltip-content {
+  @apply text-white;
+}
+
+.ds-tooltip-top::before,
+.ds-tooltip-top-start::before,
+.ds-tooltip-top-end::before {
+  content: "";
+  @apply absolute top-full left-1/2 -translate-x-1/2;
+  @apply border-4 border-transparent;
+}
+
+.ds-tooltip-default.ds-tooltip-top::before,
+.ds-tooltip-default.ds-tooltip-top-start::before,
+.ds-tooltip-default.ds-tooltip-top-end::before {
+  @apply border-t-ds-gray-900;
+}
+
+.ds-tooltip-success.ds-tooltip-top::before,
+.ds-tooltip-success.ds-tooltip-top-start::before,
+.ds-tooltip-success.ds-tooltip-top-end::before {
+  @apply border-t-ds-teal-600;
+}
+
+.ds-tooltip-info.ds-tooltip-top::before,
+.ds-tooltip-info.ds-tooltip-top-start::before,
+.ds-tooltip-info.ds-tooltip-top-end::before {
+  @apply border-t-ds-blue-600;
+}
+
+.ds-tooltip-warning.ds-tooltip-top::before,
+.ds-tooltip-warning.ds-tooltip-top-start::before,
+.ds-tooltip-warning.ds-tooltip-top-end::before {
+  @apply border-t-ds-yellow-600;
+}
+
+.ds-tooltip-error.ds-tooltip-top::before,
+.ds-tooltip-error.ds-tooltip-top-start::before,
+.ds-tooltip-error.ds-tooltip-top-end::before {
+  @apply border-t-ds-red-600;
+}
+
+.ds-tooltip-top-start::before {
+  @apply left-4;
+}
+
+.ds-tooltip-top-end::before {
+  @apply left-auto right-4;
+}
+
+.ds-tooltip-bottom::before,
+.ds-tooltip-bottom-start::before,
+.ds-tooltip-bottom-end::before {
+  content: "";
+  @apply absolute bottom-full left-1/2 -translate-x-1/2;
+  @apply border-4 border-transparent;
+}
+
+.ds-tooltip-default.ds-tooltip-bottom::before,
+.ds-tooltip-default.ds-tooltip-bottom-start::before,
+.ds-tooltip-default.ds-tooltip-bottom-end::before {
+  @apply border-b-ds-gray-900;
+}
+
+.ds-tooltip-success.ds-tooltip-bottom::before,
+.ds-tooltip-success.ds-tooltip-bottom-start::before,
+.ds-tooltip-success.ds-tooltip-bottom-end::before {
+  @apply border-b-ds-teal-600;
+}
+
+.ds-tooltip-info.ds-tooltip-bottom::before,
+.ds-tooltip-info.ds-tooltip-bottom-start::before,
+.ds-tooltip-info.ds-tooltip-bottom-end::before {
+  @apply border-b-ds-blue-600;
+}
+
+.ds-tooltip-warning.ds-tooltip-bottom::before,
+.ds-tooltip-warning.ds-tooltip-bottom-start::before,
+.ds-tooltip-warning.ds-tooltip-bottom-end::before {
+  @apply border-b-ds-yellow-600;
+}
+
+.ds-tooltip-error.ds-tooltip-bottom::before,
+.ds-tooltip-error.ds-tooltip-bottom-start::before,
+.ds-tooltip-error.ds-tooltip-bottom-end::before {
+  @apply border-b-ds-red-600;
+}
+
+.ds-tooltip-bottom-start::before {
+  @apply left-4;
+}
+
+.ds-tooltip-bottom-end::before {
+  @apply left-auto right-4;
+}
+
+.ds-tooltip-left::before,
+.ds-tooltip-left-start::before,
+.ds-tooltip-left-end::before {
+  content: "";
+  @apply absolute left-full top-1/2 -translate-y-1/2;
+  @apply border-4 border-transparent;
+}
+
+.ds-tooltip-default.ds-tooltip-left::before,
+.ds-tooltip-default.ds-tooltip-left-start::before,
+.ds-tooltip-default.ds-tooltip-left-end::before {
+  @apply border-l-ds-gray-900;
+}
+
+.ds-tooltip-success.ds-tooltip-left::before,
+.ds-tooltip-success.ds-tooltip-left-start::before,
+.ds-tooltip-success.ds-tooltip-left-end::before {
+  @apply border-l-ds-teal-600;
+}
+
+.ds-tooltip-info.ds-tooltip-left::before,
+.ds-tooltip-info.ds-tooltip-left-start::before,
+.ds-tooltip-info.ds-tooltip-left-end::before {
+  @apply border-l-ds-blue-600;
+}
+
+.ds-tooltip-warning.ds-tooltip-left::before,
+.ds-tooltip-warning.ds-tooltip-left-start::before,
+.ds-tooltip-warning.ds-tooltip-left-end::before {
+  @apply border-l-ds-yellow-600;
+}
+
+.ds-tooltip-error.ds-tooltip-left::before,
+.ds-tooltip-error.ds-tooltip-left-start::before,
+.ds-tooltip-error.ds-tooltip-left-end::before {
+  @apply border-l-ds-red-600;
+}
+
+.ds-tooltip-left-start::before {
+  @apply top-4;
+}
+
+.ds-tooltip-left-end::before {
+  @apply top-auto bottom-4;
+}
+
+.ds-tooltip-right::before,
+.ds-tooltip-right-start::before,
+.ds-tooltip-right-end::before {
+  content: "";
+  @apply absolute right-full top-1/2 -translate-y-1/2;
+  @apply border-4 border-transparent;
+}
+
+.ds-tooltip-default.ds-tooltip-right::before,
+.ds-tooltip-default.ds-tooltip-right-start::before,
+.ds-tooltip-default.ds-tooltip-right-end::before {
+  @apply border-r-ds-gray-900;
+}
+
+.ds-tooltip-success.ds-tooltip-right::before,
+.ds-tooltip-success.ds-tooltip-right-start::before,
+.ds-tooltip-success.ds-tooltip-right-end::before {
+  @apply border-r-ds-teal-600;
+}
+
+.ds-tooltip-info.ds-tooltip-right::before,
+.ds-tooltip-info.ds-tooltip-right-start::before,
+.ds-tooltip-info.ds-tooltip-right-end::before {
+  @apply border-r-ds-blue-600;
+}
+
+.ds-tooltip-warning.ds-tooltip-right::before,
+.ds-tooltip-warning.ds-tooltip-right-start::before,
+.ds-tooltip-warning.ds-tooltip-right-end::before {
+  @apply border-r-ds-yellow-600;
+}
+
+.ds-tooltip-error.ds-tooltip-right::before,
+.ds-tooltip-error.ds-tooltip-right-start::before,
+.ds-tooltip-error.ds-tooltip-right-end::before {
+  @apply border-r-ds-red-600;
+}
+
+.ds-tooltip-right-start::before {
+  @apply top-4;
+}
+
+.ds-tooltip-right-end::before {
+  @apply top-auto bottom-4;
+}
+
