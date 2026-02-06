@@ -33,7 +33,7 @@ const Typography = (props: Props) => {
   const weightMap: Record<TextWeights, string> = {
     regular: "font-regular",
     medium: "font-medium",
-    semibold: "font-seminold",
+    semibold: "font-semibold",
     bold: "font-bold",
   };
 

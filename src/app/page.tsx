@@ -124,6 +124,51 @@ export default function HomePage() {
             </ShowcaseCard>
 
             <ShowcaseCard
+              title="Typography"
+              description="Text variants, weights, and semantic tags for consistent type scale."
+            >
+              <div className="w-full space-y-4">
+                <div className="space-y-2">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700">
+                    Variants
+                  </Typography>
+                  <div className="space-y-1">
+                    <Typography variant="xs">XS / text-xs</Typography>
+                    <Typography variant="sm">SM / text-sm</Typography>
+                    <Typography variant="base">Base / text-base</Typography>
+                    <Typography variant="lg">LG / text-lg</Typography>
+                    <Typography variant="xl">XL / text-xl</Typography>
+                    <Typography variant="2xl">2XL / text-2xl</Typography>
+                    <Typography variant="3xl">3XL / text-3xl</Typography>
+                    <Typography variant="4xl">4XL / text-4xl</Typography>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700">
+                    Weights
+                  </Typography>
+                  <div className="space-y-1">
+                    <Typography weight="regular">Regular</Typography>
+                    <Typography weight="medium">Medium</Typography>
+                    <Typography weight="semibold">Semibold</Typography>
+                    <Typography weight="bold">Bold</Typography>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700">
+                    Tags
+                  </Typography>
+                  <div className="space-y-1">
+                    <Typography Tag="p">Paragraph text</Typography>
+                    <Typography Tag="h3" variant="lg" weight="semibold">
+                      Heading with h3 tag
+                    </Typography>
+                  </div>
+                </div>
+              </div>
+            </ShowcaseCard>
+
+            <ShowcaseCard
               title="Badges"
               description="Badge components with variants, colors, sizes, icons, and click handlers."
             >
