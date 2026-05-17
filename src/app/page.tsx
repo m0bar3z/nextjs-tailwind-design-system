@@ -159,8 +159,8 @@ export default function HomePage() {
                     Tags
                   </Typography>
                   <div className="space-y-1">
-                    <Typography Tag="p">Paragraph text</Typography>
-                    <Typography Tag="h3" variant="lg" weight="semibold">
+                    <Typography as="p">Paragraph text</Typography>
+                    <Typography as="h3" variant="lg" weight="semibold">
                       Heading with h3 tag
                     </Typography>
                   </div>

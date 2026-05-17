@@ -53,7 +53,7 @@ export const ModalHeader = ({ title, onClose, className }: ModalHeaderProps) => 
   return (
     <div className={clsx("ds-modal-header", className)}>
       {title && (
-        <Typography variant="xl" weight="semibold" className="ds-modal-header-title" Tag="h2">
+        <Typography variant="xl" weight="semibold" className="ds-modal-header-title" as="h2">
           {title}
         </Typography>
       )}
