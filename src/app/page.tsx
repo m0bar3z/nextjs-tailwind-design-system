@@ -156,6 +156,26 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-2">
                   <Typography variant="sm" weight="medium" className="text-ds-gray-700">
+                    Colors
+                  </Typography>
+                  <div className="space-y-1">
+                    <Typography color="default">Default text</Typography>
+                    <Typography color="muted">Muted text</Typography>
+                    <Typography color="primary">Primary text</Typography>
+                    <Typography color="success">Success text</Typography>
+                    <Typography color="error">Error text</Typography>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700">
+                    Responsive
+                  </Typography>
+                  <Typography variant={{ base: "sm", md: "lg", xl: "2xl" }} weight="semibold" color="primary">
+                    SM on mobile, LG on tablet, 2XL on wide screens
+                  </Typography>
+                </div>
+                <div className="space-y-2">
+                  <Typography variant="sm" weight="medium" className="text-ds-gray-700">
                     Tags
                   </Typography>
                   <div className="space-y-1">
