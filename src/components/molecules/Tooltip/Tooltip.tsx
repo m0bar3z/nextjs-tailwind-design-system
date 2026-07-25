@@ -2,7 +2,7 @@
 
 import Typography from "@/components/atoms/Typography/Typography";
 import clsx from "clsx";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import "./Tooltip.css";
 
@@ -33,6 +33,14 @@ interface Props {
   className?: string;
 }
 
+const VARIANT_CLASSES: Record<Variant, string> = {
+  default: "ds-tooltip-default",
+  success: "ds-tooltip-success",
+  info: "ds-tooltip-info",
+  warning: "ds-tooltip-warning",
+  error: "ds-tooltip-error",
+};
+
 const Tooltip = ({
   children,
   content,
@@ -43,16 +51,6 @@ const Tooltip = ({
   variant = "default",
   className,
 }: Props) => {
-  const variants: Record<Variant, string> = useMemo(
-    () => ({
-      default: "ds-tooltip-default",
-      success: "ds-tooltip-success",
-      info: "ds-tooltip-info",
-      warning: "ds-tooltip-warning",
-      error: "ds-tooltip-error",
-    }),
-    []
-  );
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const [isClient, setIsClient] = useState(false);
@@ -134,6 +132,15 @@ const Tooltip = ({
           break;
       }
 
+      const viewportPadding = 8;
+      const minLeft = scrollX + viewportPadding;
+      const maxLeft = scrollX + window.innerWidth - tooltipRect.width - viewportPadding;
+      const minTop = scrollY + viewportPadding;
+      const maxTop = scrollY + window.innerHeight - tooltipRect.height - viewportPadding;
+
+      left = Math.min(Math.max(left, minLeft), Math.max(minLeft, maxLeft));
+      top = Math.min(Math.max(top, minTop), Math.max(minTop, maxTop));
+
       setPosition({ top, left });
     };
 
@@ -183,7 +190,7 @@ const Tooltip = ({
         createPortal(
           <div
             ref={tooltipRef}
-            className={clsx("ds-tooltip", `ds-tooltip-${placement}`, variants[variant], className)}
+            className={clsx("ds-tooltip", `ds-tooltip-${placement}`, VARIANT_CLASSES[variant], className)}
             style={{
               position: "absolute",
               top: `${position.top}px`,
@@ -201,4 +208,3 @@ const Tooltip = ({
 };
 
 export default Tooltip;
-

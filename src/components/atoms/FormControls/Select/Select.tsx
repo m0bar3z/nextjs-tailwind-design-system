@@ -12,10 +12,10 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
 
 const Select = ({ options, className, ...rest }: Props) => {
   return (
-    <div className="relative">
+    <div className="relative w-full max-w-96">
       <span
         className={clsx(
-          "py3.5 absolute right-0 flex h-full items-center px-4",
+          "absolute right-0 flex h-full items-center px-4 py-3.5",
           rest.disabled ? "text-ds-gray-300" : "text-ds-gray-500"
         )}
       >

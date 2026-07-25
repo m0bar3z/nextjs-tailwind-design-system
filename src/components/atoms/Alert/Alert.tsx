@@ -2,7 +2,7 @@ import Button from "@/components/atoms/Button/Button";
 import Typography from "@/components/atoms/Typography/Typography";
 import clsx from "clsx";
 import { X } from "lucide-react";
-import { FC, memo, useMemo } from "react";
+import { FC, memo } from "react";
 import "./Alert.css";
 
 type Variant = "success" | "info" | "warning" | "error";
@@ -15,19 +15,16 @@ interface Props {
   className?: string;
 }
 
-const Alert: FC<Props> = ({ title, subtitle, variant = "info", onClose, className }) => {
-  const variants: Record<Variant, string> = useMemo(
-    () => ({
-      success: "ds-alert-success",
-      info: "ds-alert-info",
-      warning: "ds-alert-warning",
-      error: "ds-alert-error",
-    }),
-    []
-  );
+const VARIANT_CLASSES: Record<Variant, string> = {
+  success: "ds-alert-success",
+  info: "ds-alert-info",
+  warning: "ds-alert-warning",
+  error: "ds-alert-error",
+};
 
+const Alert: FC<Props> = ({ title, subtitle, variant = "info", onClose, className }) => {
   return (
-    <div className={clsx("ds-alert", variants[variant], className)} role="alert">
+    <div className={clsx("ds-alert", VARIANT_CLASSES[variant], className)} role="alert">
       <div className="ds-alert-content">
         <div className="ds-alert-text">
           <Typography variant="base" weight="semibold" className="ds-alert-title">
@@ -56,4 +53,3 @@ const Alert: FC<Props> = ({ title, subtitle, variant = "info", onClose, classNam
 };
 
 export default memo(Alert);
-

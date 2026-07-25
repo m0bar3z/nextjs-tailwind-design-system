@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, ForwardedRef, useMemo } from "react";
+import { FC, ForwardedRef } from "react";
 
 import "./Input.css";
 
@@ -17,6 +17,29 @@ interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"
   ref?: ForwardedRef<HTMLInputElement>;
 }
 
+const SIZE_CLASSES: Record<Size, string> = {
+  small: "ds-input-sm",
+  default: "ds-input-md",
+  large: "ds-input-lg",
+};
+
+const VARIANT_CLASSES: Record<Variant, string> = {
+  bordered: "ds-input-bordered",
+  light: "ds-input-light",
+  underline: "ds-input-underline",
+};
+
+const STATUS_CLASSES: Record<Status, string> = {
+  idle: "ds-input-idle",
+  success: "ds-input-success",
+  error: "ds-input-error",
+};
+
+const SHAPE_CLASSES: Record<Shape, string> = {
+  pilled: "ds-input-pilled",
+  rounded: "ds-input-rounded",
+};
+
 const Input: FC<Props> = ({
   variant = "bordered",
   status = "idle",
@@ -24,48 +47,21 @@ const Input: FC<Props> = ({
   size = "small",
   disabled,
   ref,
+  className,
   ...restProps
 }) => {
-  const sizes = useMemo<Record<Size, string>>(
-    () => ({
-      small: "ds-input-sm",
-      default: "ds-input-md",
-      large: "ds-input-lg",
-    }),
-    []
-  );
-
-  const variants = useMemo<Record<Variant, string>>(
-    () => ({
-      bordered: "ds-input-bordered",
-      light: "ds-input-light",
-      underline: "ds-input-underline",
-    }),
-    []
-  );
-
-  const states = useMemo<Record<Status, string>>(
-    () => ({
-      idle: "ds-input-idle",
-      success: "ds-input-success",
-      error: "ds-input-error",
-    }),
-    []
-  );
-
-  const shapes: Record<Shape, string> = useMemo(
-    () => ({
-      pilled: "ds-input-pilled",
-      rounded: "ds-input-rounded",
-    }),
-    []
-  );
-
   return (
     <input
       ref={ref}
       disabled={disabled}
-      className={clsx("ds-input", sizes[size], variants[variant], states[status], shapes[shape])}
+      className={clsx(
+        "ds-input",
+        SIZE_CLASSES[size],
+        VARIANT_CLASSES[variant],
+        STATUS_CLASSES[status],
+        SHAPE_CLASSES[shape],
+        className
+      )}
       {...restProps}
     />
   );

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, memo, ReactNode, useMemo } from "react";
+import { FC, memo, ReactNode } from "react";
 import "./Badge.css";
 
 type Size = "small" | "normal" | "large";
@@ -16,6 +16,27 @@ interface Props {
   className?: string;
 }
 
+const COLOR_CLASSES: Record<Color, string> = {
+  primary: "ds-badge-primary",
+  secondary: "ds-badge-secondary",
+  dark: "ds-badge-dark",
+  error: "ds-badge-error",
+  success: "ds-badge-success",
+  warning: "ds-badge-warning",
+};
+
+const VARIANT_CLASSES: Record<Variant, string> = {
+  solid: "ds-badge-solid",
+  outlined: "ds-badge-outlined",
+  soft: "ds-badge-soft",
+};
+
+const SIZE_CLASSES: Record<Size, string> = {
+  small: "ds-badge-small",
+  normal: "ds-badge-normal",
+  large: "ds-badge-large",
+};
+
 const Badge: FC<Props> = ({
   text,
   icon,
@@ -25,45 +46,15 @@ const Badge: FC<Props> = ({
   onClick,
   className,
 }) => {
-  const colors = useMemo<Record<Color, string>>(
-    () => ({
-      primary: "ds-badge-primary",
-      secondary: "ds-badge-secondary",
-      dark: "ds-badge-dark",
-      error: "ds-badge-error",
-      success: "ds-badge-success",
-      warning: "ds-badge-warning",
-    }),
-    []
-  );
-
-  const variants: Record<Variant, string> = useMemo(
-    () => ({
-      solid: "ds-badge-solid",
-      outlined: "ds-badge-outlined",
-      soft: "ds-badge-soft",
-    }),
-    []
-  );
-
-  const sizes: Record<Size, string> = useMemo(
-    () => ({
-      small: "ds-badge-small",
-      normal: "ds-badge-normal",
-      large: "ds-badge-large",
-    }),
-    []
-  );
-
   const Component = onClick ? "button" : "span";
 
   return (
     <Component
       className={clsx(
         "ds-badge",
-        variants[variant],
-        colors[color],
-        sizes[size],
+        VARIANT_CLASSES[variant],
+        COLOR_CLASSES[color],
+        SIZE_CLASSES[size],
         onClick && "ds-badge-clickable",
         className
       )}
