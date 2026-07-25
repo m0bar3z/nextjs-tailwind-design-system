@@ -7,7 +7,7 @@
 }
 
 .ds-radio.ds-radio-solid {
-  @apply checked:bg-ds-blue-600 checked:border-ds-blue-600 checked:after:bg-white;
+  @apply checked:bg-ds-blue-600 checked:border-ds-blue-600 checked:after:bg-ds-white;
   @apply focus-visible:shadow-ds-focus;
 }
 

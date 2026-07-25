@@ -33,11 +33,11 @@
 }
 
 .ds-input.ds-input-bordered.ds-input-error {
-  @apply border-ds-red-500 focus:shadow-ds-red-500/[25%];
+  @apply border-ds-red-500 focus:shadow-ds-focus-error;
 }
 
 .ds-input.ds-input-bordered.ds-input-success {
-  @apply border-ds-teal-500 focus:shadow-ds-teal-500/[25%];
+  @apply border-ds-teal-500 focus:shadow-ds-focus-success;
 }
 
 /***************/
@@ -65,9 +65,9 @@
 }
 
 .ds-input.ds-input-light.ds-input-error {
-  @apply border-ds-red-500 focus:shadow-ds-red-500/[25%];
+  @apply border-ds-red-500 focus:shadow-ds-focus-error;
 }
 
 .ds-input.ds-input-light.ds-input-success {
-  @apply border-ds-teal-500 focus:shadow-ds-teal-500/[25%];
+  @apply border-ds-teal-500 focus:shadow-ds-focus-success;
 }

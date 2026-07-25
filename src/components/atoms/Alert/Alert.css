@@ -23,16 +23,16 @@
 
 .ds-alert .ds-alert-close-button {
   @apply flex-shrink-0 cursor-pointer;
-  @apply min-w-0 !p-1 h-6 w-6;
-  @apply bg-transparent border-0;
+  @apply h-6 w-6 min-w-0 !p-1;
+  @apply border-0 bg-transparent;
 }
 
 .ds-alert .ds-alert-close-button:hover {
-  @apply bg-black/5;
+  @apply bg-ds-black/5;
 }
 
 .ds-alert .ds-alert-close-button:active {
-  @apply bg-black/10;
+  @apply bg-ds-black/10;
 }
 
 .ds-alert-close-icon {
@@ -102,4 +102,3 @@
 .ds-alert-error .ds-alert-close-button {
   @apply text-ds-red-600 focus:ring-ds-red-500;
 }
-

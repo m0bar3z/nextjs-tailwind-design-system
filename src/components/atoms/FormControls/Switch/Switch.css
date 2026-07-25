@@ -10,17 +10,17 @@
 
 .ds-switch.ds-switch-solid.ds-switch-primary {
   @apply bg-ds-gray-200 checked:bg-ds-blue-600 focus-visible:shadow-ds-focus;
-  @apply after:bg-white disabled:opacity-40;
+  @apply after:bg-ds-white disabled:opacity-40;
 }
 
 .ds-switch.ds-switch-solid.ds-switch-success {
-  @apply bg-ds-gray-200 checked:bg-ds-teal-500 focus-visible:shadow-ds-teal-500/[25%];
-  @apply after:bg-white disabled:opacity-40;
+  @apply bg-ds-gray-200 checked:bg-ds-teal-500 focus-visible:shadow-ds-focus-success;
+  @apply after:bg-ds-white disabled:opacity-40;
 }
 
 .ds-switch.ds-switch-solid.ds-switch-error {
-  @apply bg-ds-gray-200 checked:bg-ds-red-500 focus-visible:shadow-ds-red-500/[25%];
-  @apply after:bg-white disabled:opacity-40;
+  @apply bg-ds-gray-200 checked:bg-ds-red-500 focus-visible:shadow-ds-focus-error;
+  @apply after:bg-ds-white disabled:opacity-40;
 }
 
 .ds-switch.ds-switch-soft.ds-switch-primary {

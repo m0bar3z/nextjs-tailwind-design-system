@@ -1,7 +1,7 @@
 @reference '../../../styles/globals.css';
 
 .ds-badge {
-  @apply inline-flex items-center gap-1.5 font-medium rounded-lg;
+  @apply font-ds-medium inline-flex items-center gap-1.5 rounded-lg;
   @apply transition-colors;
 }
 
@@ -11,15 +11,15 @@
 }
 
 .ds-badge-small {
-  @apply px-2 py-0.5 text-xs;
+  @apply text-ds-xs px-2 py-0.5;
 }
 
 .ds-badge-normal {
-  @apply px-2.5 py-1 text-sm;
+  @apply text-ds-sm px-2.5 py-1;
 }
 
 .ds-badge-large {
-  @apply px-3 py-1.5 text-base;
+  @apply text-ds-base px-3 py-1.5;
 }
 
 .ds-badge-icon {
@@ -51,7 +51,7 @@
 }
 
 .ds-badge-solid.ds-badge-primary {
-  @apply bg-ds-blue-600 text-white;
+  @apply bg-ds-blue-600 text-ds-white;
 }
 
 .ds-badge-clickable.ds-badge-solid.ds-badge-primary:hover {
@@ -59,7 +59,7 @@
 }
 
 .ds-badge-solid.ds-badge-secondary {
-  @apply bg-ds-gray-500 text-white;
+  @apply bg-ds-gray-500 text-ds-white;
 }
 
 .ds-badge-clickable.ds-badge-solid.ds-badge-secondary:hover {
@@ -67,7 +67,7 @@
 }
 
 .ds-badge-solid.ds-badge-success {
-  @apply bg-ds-teal-500 text-white;
+  @apply bg-ds-teal-500 text-ds-white;
 }
 
 .ds-badge-clickable.ds-badge-solid.ds-badge-success:hover {
@@ -75,7 +75,7 @@
 }
 
 .ds-badge-solid.ds-badge-error {
-  @apply bg-ds-red-500 text-white;
+  @apply bg-ds-red-500 text-ds-white;
 }
 
 .ds-badge-clickable.ds-badge-solid.ds-badge-error:hover {
@@ -83,7 +83,7 @@
 }
 
 .ds-badge-solid.ds-badge-warning {
-  @apply bg-ds-yellow-500 text-white;
+  @apply bg-ds-yellow-500 text-ds-white;
 }
 
 .ds-badge-clickable.ds-badge-solid.ds-badge-warning:hover {
@@ -91,7 +91,7 @@
 }
 
 .ds-badge-solid.ds-badge-dark {
-  @apply bg-ds-gray-800 text-white;
+  @apply bg-ds-gray-800 text-ds-white;
 }
 
 .ds-badge-clickable.ds-badge-solid.ds-badge-dark:hover {
@@ -99,7 +99,7 @@
 }
 
 .ds-badge-outlined.ds-badge-primary {
-  @apply border border-ds-blue-600 text-ds-blue-600 bg-transparent;
+  @apply border-ds-blue-600 text-ds-blue-600 border bg-transparent;
 }
 
 .ds-badge-clickable.ds-badge-outlined.ds-badge-primary:hover {
@@ -107,7 +107,7 @@
 }
 
 .ds-badge-outlined.ds-badge-secondary {
-  @apply border border-ds-gray-500 text-ds-gray-500 bg-transparent;
+  @apply border-ds-gray-500 text-ds-gray-500 border bg-transparent;
 }
 
 .ds-badge-clickable.ds-badge-outlined.ds-badge-secondary:hover {
@@ -115,7 +115,7 @@
 }
 
 .ds-badge-outlined.ds-badge-success {
-  @apply border border-ds-teal-500 text-ds-teal-500 bg-transparent;
+  @apply border-ds-teal-500 text-ds-teal-500 border bg-transparent;
 }
 
 .ds-badge-clickable.ds-badge-outlined.ds-badge-success:hover {
@@ -123,7 +123,7 @@
 }
 
 .ds-badge-outlined.ds-badge-error {
-  @apply border border-ds-red-500 text-ds-red-500 bg-transparent;
+  @apply border-ds-red-500 text-ds-red-500 border bg-transparent;
 }
 
 .ds-badge-clickable.ds-badge-outlined.ds-badge-error:hover {
@@ -131,7 +131,7 @@
 }
 
 .ds-badge-outlined.ds-badge-warning {
-  @apply border border-ds-yellow-500 text-ds-yellow-500 bg-transparent;
+  @apply border-ds-yellow-500 text-ds-yellow-500 border bg-transparent;
 }
 
 .ds-badge-clickable.ds-badge-outlined.ds-badge-warning:hover {
@@ -139,7 +139,7 @@
 }
 
 .ds-badge-outlined.ds-badge-dark {
-  @apply border border-ds-gray-800 text-ds-gray-800 bg-transparent;
+  @apply border-ds-gray-800 text-ds-gray-800 border bg-transparent;
 }
 
 .ds-badge-clickable.ds-badge-outlined.ds-badge-dark:hover {
@@ -193,4 +193,3 @@
 .ds-badge-clickable.ds-badge-soft.ds-badge-dark:hover {
   @apply bg-ds-gray-300;
 }
-

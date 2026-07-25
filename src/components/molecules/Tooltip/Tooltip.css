@@ -5,7 +5,7 @@
 }
 
 .ds-tooltip {
-  @apply z-50 max-w-xs rounded-lg px-3 py-2 shadow-ds-lg;
+  @apply shadow-ds-lg z-50 max-w-[calc(100vw-1rem)] rounded-lg px-3 py-2 sm:max-w-xs;
   @apply pointer-events-none;
   @apply opacity-0 transition-opacity duration-200;
   animation: tooltipFadeIn 0.2s ease-out forwards;
@@ -30,40 +30,28 @@
   @apply bg-ds-gray-900;
 }
 
-.ds-tooltip-default .ds-tooltip-content {
-  @apply text-white;
-}
-
 .ds-tooltip-success {
   @apply bg-ds-teal-600;
-}
-
-.ds-tooltip-success .ds-tooltip-content {
-  @apply text-white;
 }
 
 .ds-tooltip-info {
   @apply bg-ds-blue-600;
 }
 
-.ds-tooltip-info .ds-tooltip-content {
-  @apply text-white;
-}
-
 .ds-tooltip-warning {
   @apply bg-ds-yellow-600;
-}
-
-.ds-tooltip-warning .ds-tooltip-content {
-  @apply text-white;
 }
 
 .ds-tooltip-error {
   @apply bg-ds-red-600;
 }
 
+.ds-tooltip-default .ds-tooltip-content,
+.ds-tooltip-success .ds-tooltip-content,
+.ds-tooltip-info .ds-tooltip-content,
+.ds-tooltip-warning .ds-tooltip-content,
 .ds-tooltip-error .ds-tooltip-content {
-  @apply text-white;
+  @apply text-ds-white;
 }
 
 .ds-tooltip-top::before,
@@ -109,7 +97,7 @@
 }
 
 .ds-tooltip-top-end::before {
-  @apply left-auto right-4;
+  @apply right-4 left-auto;
 }
 
 .ds-tooltip-bottom::before,
@@ -155,14 +143,14 @@
 }
 
 .ds-tooltip-bottom-end::before {
-  @apply left-auto right-4;
+  @apply right-4 left-auto;
 }
 
 .ds-tooltip-left::before,
 .ds-tooltip-left-start::before,
 .ds-tooltip-left-end::before {
   content: "";
-  @apply absolute left-full top-1/2 -translate-y-1/2;
+  @apply absolute top-1/2 left-full -translate-y-1/2;
   @apply border-4 border-transparent;
 }
 
@@ -208,7 +196,7 @@
 .ds-tooltip-right-start::before,
 .ds-tooltip-right-end::before {
   content: "";
-  @apply absolute right-full top-1/2 -translate-y-1/2;
+  @apply absolute top-1/2 right-full -translate-y-1/2;
   @apply border-4 border-transparent;
 }
 
@@ -249,4 +237,3 @@
 .ds-tooltip-right-end::before {
   @apply top-auto bottom-4;
 }
-

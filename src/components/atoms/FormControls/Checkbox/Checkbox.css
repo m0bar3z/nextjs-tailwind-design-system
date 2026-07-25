@@ -6,7 +6,7 @@
 
   &::after {
     content: "";
-    @apply pointer-events-none absolute top-1/2 left-1/2 z-10 block h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 transform bg-white opacity-0 transition-all duration-200 ease-in-out;
+    @apply bg-ds-white pointer-events-none absolute top-1/2 left-1/2 z-10 block h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 transform opacity-0 transition-all duration-200 ease-in-out;
 
     mask-size: 120%;
     mask-position: center;
@@ -42,6 +42,6 @@
 }
 
 .ds-checkbox.error {
-  @apply !border-ds-red-500 after:content-none checked:bg-white focus-visible:shadow-none;
+  @apply !border-ds-red-500 checked:bg-ds-white after:content-none focus-visible:shadow-none;
   @apply disabled:!border-ds-red-200;
 }

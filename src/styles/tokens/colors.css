@@ -1,6 +1,9 @@
 @theme {
   --color-gray-*: initial;
 
+  --color-ds-white: #ffffff;
+  --color-ds-black: #000000;
+
   --color-ds-slate-50: #f8fafc;
   --color-ds-slate-100: #f1f5f9;
   --color-ds-slate-200: #e2e8f0;
