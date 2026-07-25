@@ -13,7 +13,7 @@ const ShowcaseCard = ({ title, description, children, className }: Props) => {
   return (
     <div
       className={clsx(
-        "group border-ds-gray-200 shadow-ds-sm hover:shadow-ds-md rounded-xl border bg-white p-6 transition-all",
+        "group border-ds-gray-200 bg-ds-white shadow-ds-sm hover:shadow-ds-md rounded-xl border p-4 transition-all sm:p-6",
         className
       )}
     >
