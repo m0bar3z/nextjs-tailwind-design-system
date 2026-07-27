@@ -1,9 +1,33 @@
 @reference '../../../../styles/globals.css';
 
 .ds-select {
-  @apply border-ds-gray-200 w-full max-w-96 appearance-none rounded-lg border px-4 py-3.5 transition-shadow outline-none;
-  @apply focus:border-ds-blue-600 focus:shadow-ds-focus;
-  @apply disabled:bg-ds-gray-50 disabled:border-ds-gray-100 disabled:text-ds-gray-300 disabled:pointer-events-none;
+  @apply border-ds-gray-200 bg-ds-white text-ds-gray-900 w-full appearance-none rounded-lg border pr-10 pl-4;
+  @apply focus:border-ds-blue-600 focus:shadow-ds-focus transition-shadow outline-none;
+  @apply disabled:border-ds-gray-100 disabled:bg-ds-gray-50 disabled:text-ds-gray-300 disabled:cursor-not-allowed;
+}
+
+.ds-select-sm {
+  @apply text-ds-sm min-h-9 py-2;
+}
+
+.ds-select-md {
+  @apply text-ds-base min-h-11 py-2.5;
+}
+
+.ds-select-lg {
+  @apply text-ds-lg min-h-12 py-3;
+}
+
+.ds-select-multiple {
+  @apply min-h-24 pr-4;
+}
+
+.ds-select.ds-validation-invalid {
+  @apply border-ds-red-500 focus:border-ds-red-500 focus:shadow-ds-focus-error;
+}
+
+.ds-select.ds-validation-valid {
+  @apply border-ds-teal-500 focus:border-ds-teal-500 focus:shadow-ds-focus-success;
 }
 
 .ds-select option {

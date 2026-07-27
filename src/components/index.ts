@@ -11,3 +11,4 @@ export { default as Card } from "./molecules/Card/Card";
 export { default as Modal, ModalBody, ModalFooter, ModalHeader } from "./molecules/Modal/Modal";
 export { default as ShowcaseCard } from "./molecules/ShowcaseCard/ShowcaseCard";
 export { default as Tooltip } from "./molecules/Tooltip/Tooltip";
+export type { ComponentSize, ValidationState } from "./types";

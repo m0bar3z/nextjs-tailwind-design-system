@@ -10,7 +10,7 @@ const CardShowcase = () => (
     className="lg:col-span-2"
   >
     <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-      <Card title="Card with Footer" subtitle="Subtitle text" footer={<Button size="small">Action</Button>}>
+      <Card title="Card with Footer" subtitle="Subtitle text" footer={<Button size="sm">Action</Button>}>
         <Typography variant="sm" color="muted">
           This card includes title, subtitle, content, and footer sections.
         </Typography>

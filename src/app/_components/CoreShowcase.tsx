@@ -17,14 +17,18 @@ const SELECT_OPTIONS = [
 const CoreShowcase = () => (
   <>
     <ShowcaseCard title="Buttons" description="Various button styles, sizes, and variants to fit any use case.">
-      <Button size="small">Small</Button>
-      <Button size="normal">Normal</Button>
-      <Button size="large">Large</Button>
+      <Button size="sm">SM</Button>
+      <Button size="md">MD</Button>
+      <Button size="lg">LG</Button>
       <Button variant="outlined">Outlined</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="soft">Soft</Button>
       <Button color="success">Success</Button>
       <Button color="error">Error</Button>
+      <Button disabled>Disabled</Button>
+      <Button loading loadingLabel="Loading example">
+        Loading
+      </Button>
       <Button leadingIcon={<ArrowUpToLine />}>With Icon</Button>
     </ShowcaseCard>
 
@@ -33,6 +37,8 @@ const CoreShowcase = () => (
         <Input variant="bordered" placeholder="Bordered input" />
         <Input variant="light" placeholder="Light input" />
         <Input variant="underline" placeholder="Underline input" />
+        <Input validationState="invalid" placeholder="Invalid input" aria-label="Invalid input" />
+        <Input readOnly value="Read-only value" aria-label="Read-only input" />
       </div>
     </ShowcaseCard>
 
@@ -40,7 +46,7 @@ const CoreShowcase = () => (
       <div className="w-full space-y-4">
         <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-2">
-            <Checkbox aria-label="Default checkbox" />
+            <Checkbox aria-label="Default checkbox" defaultChecked />
             <Typography variant="sm">Default</Typography>
           </div>
           <div className="flex items-center gap-2">
@@ -50,7 +56,7 @@ const CoreShowcase = () => (
         </div>
         <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-2">
-            <Radio name="showcase-radio" aria-label="First radio option" />
+            <Radio name="showcase-radio" aria-label="First radio option" defaultChecked />
             <Typography variant="sm">Radio 1</Typography>
           </div>
           <div className="flex items-center gap-2">

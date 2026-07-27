@@ -38,9 +38,9 @@ const BadgeShowcase = () => {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <SectionLabel>Sizes:</SectionLabel>
-          <Badge text="Small" size="small" />
-          <Badge text="Normal" size="normal" />
-          <Badge text="Large" size="large" />
+          <Badge text="SM" size="sm" />
+          <Badge text="MD" size="md" />
+          <Badge text="LG" size="lg" />
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <SectionLabel>With Icons:</SectionLabel>

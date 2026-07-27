@@ -1,12 +1,13 @@
+import type { ComponentSize, ValidationState } from "@/components/types";
 import clsx from "clsx";
+import { memo } from "react";
 import "./Radio.css";
 
 type Variant = "solid" | "soft";
-type Status = "idle" | "error" | "success";
-
-interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
+interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   variant?: Variant;
-  status?: Status;
+  size?: ComponentSize;
+  validationState?: ValidationState;
 }
 
 const VARIANT_CLASSES: Record<Variant, string> = {
@@ -14,22 +15,34 @@ const VARIANT_CLASSES: Record<Variant, string> = {
   solid: "ds-radio-solid",
 };
 
-const STATUS_CLASSES: Record<Status, string> = {
-  idle: "",
-  error: "ds-radio-error",
-  success: "ds-radio-success",
+const SIZE_CLASSES: Record<ComponentSize, string> = {
+  sm: "ds-radio-sm",
+  md: "ds-radio-md",
+  lg: "ds-radio-lg",
+};
+
+const VALIDATION_CLASSES: Record<ValidationState, string> = {
+  default: "",
+  valid: "ds-validation-valid",
+  invalid: "ds-validation-invalid",
 };
 
 const Radio = (props: Props) => {
-  const { variant = "solid", status = "idle", className, ...restProps } = props;
+  const { variant = "solid", size = "md", validationState = "default", className, ...restProps } = props;
 
   return (
     <input
       type="radio"
-      className={clsx("ds-radio", VARIANT_CLASSES[variant], STATUS_CLASSES[status], className)}
+      className={clsx(
+        "ds-radio",
+        VARIANT_CLASSES[variant],
+        SIZE_CLASSES[size],
+        VALIDATION_CLASSES[validationState],
+        className
+      )}
       {...restProps}
     />
   );
 };
 
-export default Radio;
+export default memo(Radio);

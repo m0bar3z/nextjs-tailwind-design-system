@@ -1,8 +1,8 @@
+import type { ComponentSize } from "@/components/types";
 import clsx from "clsx";
 import { FC, memo, ReactNode } from "react";
 import "./Badge.css";
 
-type Size = "small" | "normal" | "large";
 type Variant = "solid" | "outlined" | "soft";
 type Color = "primary" | "secondary" | "success" | "error" | "warning" | "dark";
 
@@ -11,7 +11,7 @@ interface Props {
   icon?: ReactNode;
   variant?: Variant;
   color?: Color;
-  size?: Size;
+  size?: ComponentSize;
   onClick?: () => void;
   className?: string;
 }
@@ -31,40 +31,34 @@ const VARIANT_CLASSES: Record<Variant, string> = {
   soft: "ds-badge-soft",
 };
 
-const SIZE_CLASSES: Record<Size, string> = {
-  small: "ds-badge-small",
-  normal: "ds-badge-normal",
-  large: "ds-badge-large",
+const SIZE_CLASSES: Record<ComponentSize, string> = {
+  sm: "ds-badge-sm",
+  md: "ds-badge-md",
+  lg: "ds-badge-lg",
 };
 
-const Badge: FC<Props> = ({
-  text,
-  icon,
-  variant = "solid",
-  color = "primary",
-  size = "normal",
-  onClick,
-  className,
-}) => {
-  const Component = onClick ? "button" : "span";
-
-  return (
-    <Component
-      className={clsx(
-        "ds-badge",
-        VARIANT_CLASSES[variant],
-        COLOR_CLASSES[color],
-        SIZE_CLASSES[size],
-        onClick && "ds-badge-clickable",
-        className
-      )}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-      tabIndex={onClick ? 0 : undefined}
-    >
+const Badge: FC<Props> = ({ text, icon, variant = "solid", color = "primary", size = "md", onClick, className }) => {
+  const badgeClassName = clsx(
+    "ds-badge",
+    VARIANT_CLASSES[variant],
+    COLOR_CLASSES[color],
+    SIZE_CLASSES[size],
+    onClick && "ds-badge-clickable",
+    className
+  );
+  const content = (
+    <>
       {icon && <span className="ds-badge-icon">{icon}</span>}
       <span className="ds-badge-text">{text}</span>
-    </Component>
+    </>
+  );
+
+  return onClick ? (
+    <button type="button" className={badgeClassName} onClick={onClick}>
+      {content}
+    </button>
+  ) : (
+    <span className={badgeClassName}>{content}</span>
   );
 };
 

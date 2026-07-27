@@ -29,23 +29,23 @@ const OverlayShowcase = () => {
           <div className="flex flex-wrap items-center gap-3">
             <SectionLabel>Variants:</SectionLabel>
             <Tooltip content="Default tooltip" variant="default">
-              <Button size="small">Default</Button>
+              <Button size="sm">Default</Button>
             </Tooltip>
             <Tooltip content="Success tooltip" variant="success">
-              <Button size="small" color="success">
+              <Button size="sm" color="success">
                 Success
               </Button>
             </Tooltip>
             <Tooltip content="Info tooltip" variant="info">
-              <Button size="small">Info</Button>
+              <Button size="sm">Info</Button>
             </Tooltip>
             <Tooltip content="Warning tooltip" variant="warning">
-              <Button size="small" color="warning">
+              <Button size="sm" color="warning">
                 Warning
               </Button>
             </Tooltip>
             <Tooltip content="Error tooltip" variant="error">
-              <Button size="small" color="error">
+              <Button size="sm" color="error">
                 Error
               </Button>
             </Tooltip>
@@ -53,16 +53,16 @@ const OverlayShowcase = () => {
           <div className="flex flex-wrap items-center gap-3">
             <SectionLabel>Placements:</SectionLabel>
             <Tooltip content="Top placement" placement="top">
-              <Button size="small">Top</Button>
+              <Button size="sm">Top</Button>
             </Tooltip>
             <Tooltip content="Bottom placement" placement="bottom">
-              <Button size="small">Bottom</Button>
+              <Button size="sm">Bottom</Button>
             </Tooltip>
             <Tooltip content="Left placement" placement="left">
-              <Button size="small">Left</Button>
+              <Button size="sm">Left</Button>
             </Tooltip>
             <Tooltip content="Right placement" placement="right">
-              <Button size="small">Right</Button>
+              <Button size="sm">Right</Button>
             </Tooltip>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -79,7 +79,7 @@ const OverlayShowcase = () => {
         description="Accessible modal with smooth animations and backdrop blur."
         className="lg:col-span-2"
       >
-        <Button onClick={openModal} size="normal">
+        <Button onClick={openModal} size="md">
           Open Modal Example
         </Button>
         <Typography variant="sm" color="subtle">

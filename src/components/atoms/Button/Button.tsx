@@ -1,21 +1,23 @@
+import type { ComponentSize } from "@/components/types";
 import { ComponentPropsWithoutRef, FC, memo, ReactNode } from "react";
 
 import clsx from "clsx";
 import "./Button.css";
 
-type Size = "small" | "normal" | "large";
 type Variant = "solid" | "outlined" | "ghost" | "soft";
 type Shape = "rounded" | "pilled";
 type Color = "primary" | "secondary" | "success" | "error" | "warning" | "dark";
 
 interface Props extends ComponentPropsWithoutRef<"button"> {
   children: ReactNode;
-  size?: Size;
+  size?: ComponentSize;
   variant?: Variant;
   shape?: Shape;
   color?: Color;
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
+  loading?: boolean;
+  loadingLabel?: string;
 }
 
 const COLOR_CLASSES: Record<Color, string> = {
@@ -34,10 +36,10 @@ const VARIANT_CLASSES: Record<Variant, string> = {
   soft: "ds-btn-soft",
 };
 
-const SIZE_CLASSES: Record<Size, string> = {
-  normal: "ds-btn-normal",
-  small: "ds-btn-small",
-  large: "ds-btn-large",
+const SIZE_CLASSES: Record<ComponentSize, string> = {
+  sm: "ds-btn-sm",
+  md: "ds-btn-md",
+  lg: "ds-btn-lg",
 };
 
 const SHAPE_CLASSES: Record<Shape, string> = {
@@ -46,18 +48,23 @@ const SHAPE_CLASSES: Record<Shape, string> = {
 };
 
 const Button: FC<Props> = ({
-  size = "small",
+  size = "md",
   variant = "solid",
   shape = "rounded",
   color = "primary",
   leadingIcon,
   trailingIcon,
+  loading = false,
+  loadingLabel = "Loading",
   children,
   className,
   disabled,
   type = "button",
+  "aria-label": ariaLabel,
   ...restProps
 }) => {
+  const isDisabled = disabled || loading;
+
   return (
     <button
       className={clsx(
@@ -66,18 +73,22 @@ const Button: FC<Props> = ({
         COLOR_CLASSES[color],
         SIZE_CLASSES[size],
         SHAPE_CLASSES[shape],
-        disabled && "ds-btn-disabled",
+        isDisabled && "ds-btn-disabled",
+        loading && "ds-btn-loading",
         className
       )}
-      disabled={disabled}
+      disabled={isDisabled}
       type={type}
+      aria-busy={loading || undefined}
+      aria-label={loading ? loadingLabel : ariaLabel}
       {...restProps}
     >
-      {leadingIcon ? <span>{leadingIcon}</span> : null}
-
-      {children}
-
-      {trailingIcon ? <span>{trailingIcon}</span> : null}
+      <span className="ds-btn-content" aria-hidden={loading || undefined}>
+        {leadingIcon ? <span className="ds-btn-icon">{leadingIcon}</span> : null}
+        {children}
+        {trailingIcon ? <span className="ds-btn-icon">{trailingIcon}</span> : null}
+      </span>
+      {loading ? <span className="ds-btn-spinner" aria-hidden="true" /> : null}
     </button>
   );
 };

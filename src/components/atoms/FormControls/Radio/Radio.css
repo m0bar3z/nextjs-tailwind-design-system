@@ -1,17 +1,52 @@
 @reference '../../../../styles/globals.css';
 
 .ds-radio {
-  @apply border-ds-gray-200 flex size-4 appearance-none items-center justify-center rounded-full border transition-all duration-200 ease-in-out;
-  @apply focus-visible:outline-0;
-  @apply after:transition-all after:duration-200 after:ease-in-out checked:after:size-2 checked:after:rounded-full checked:after:content-[''];
+  @apply border-ds-gray-200 flex shrink-0 cursor-pointer appearance-none items-center justify-center rounded-full border;
+  @apply focus-visible:shadow-ds-focus transition-all duration-200 ease-in-out focus-visible:outline-none;
+  @apply after:rounded-full after:transition-all after:duration-200 after:ease-in-out checked:after:content-[''];
+  @apply disabled:cursor-not-allowed disabled:opacity-40;
 }
 
-.ds-radio.ds-radio-solid {
-  @apply checked:bg-ds-blue-600 checked:border-ds-blue-600 checked:after:bg-ds-white;
-  @apply focus-visible:shadow-ds-focus;
+.ds-radio-sm {
+  @apply size-3.5 checked:after:size-1.5;
 }
 
-.ds-radio.ds-radio-soft {
-  @apply checked:after:bg-ds-blue-600;
-  @apply checked:border-ds-blue-600 checked:bg-ds-blue-800/[10%] checked:border;
+.ds-radio-md {
+  @apply size-4 checked:after:size-2;
+}
+
+.ds-radio-lg {
+  @apply size-5 checked:after:size-2.5;
+}
+
+.ds-radio-solid {
+  @apply checked:border-ds-blue-600 checked:bg-ds-blue-600 checked:after:bg-ds-white;
+}
+
+.ds-radio-soft {
+  @apply checked:border-ds-blue-600 checked:bg-ds-blue-800/10 checked:after:bg-ds-blue-600;
+}
+
+.ds-radio.ds-validation-valid {
+  @apply border-ds-teal-500 focus-visible:shadow-ds-focus-success;
+}
+
+.ds-radio-solid.ds-validation-valid {
+  @apply checked:border-ds-teal-500 checked:bg-ds-teal-500;
+}
+
+.ds-radio-soft.ds-validation-valid {
+  @apply checked:border-ds-teal-500 checked:bg-ds-teal-500/10 checked:after:bg-ds-teal-500;
+}
+
+.ds-radio.ds-validation-invalid {
+  @apply border-ds-red-500 focus-visible:shadow-ds-focus-error;
+}
+
+.ds-radio-solid.ds-validation-invalid {
+  @apply checked:border-ds-red-500 checked:bg-ds-red-500;
+}
+
+.ds-radio-soft.ds-validation-invalid {
+  @apply checked:border-ds-red-500 checked:bg-ds-red-500/10 checked:after:bg-ds-red-500;
 }

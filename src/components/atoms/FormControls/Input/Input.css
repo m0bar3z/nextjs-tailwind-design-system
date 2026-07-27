@@ -1,19 +1,21 @@
 @reference '../../../../styles/globals.css';
 
 .ds-input {
-  @apply transition-shadow;
+  @apply text-ds-gray-900 w-full min-w-0 transition-shadow;
+  @apply read-only:bg-ds-gray-50 read-only:text-ds-gray-600 read-only:cursor-default;
+  @apply disabled:text-ds-gray-400 disabled:cursor-not-allowed;
 }
 
 .ds-input-sm {
-  @apply px-3 py-2;
+  @apply text-ds-sm min-h-9 px-3 py-2;
 }
 
 .ds-input-md {
-  @apply px-4 py-3;
+  @apply text-ds-base min-h-11 px-4 py-2.5;
 }
 
 .ds-input-lg {
-  @apply px-5 py-4;
+  @apply text-ds-lg min-h-12 px-5 py-3;
 }
 
 .ds-input-rounded {
@@ -32,11 +34,11 @@
   @apply disabled:bg-ds-gray-50 disabled:border-ds-gray-100 disabled:placeholder:text-ds-gray-300;
 }
 
-.ds-input.ds-input-bordered.ds-input-error {
+.ds-input.ds-input-bordered.ds-validation-invalid {
   @apply border-ds-red-500 focus:shadow-ds-focus-error;
 }
 
-.ds-input.ds-input-bordered.ds-input-success {
+.ds-input.ds-input-bordered.ds-validation-valid {
   @apply border-ds-teal-500 focus:shadow-ds-focus-success;
 }
 
@@ -48,11 +50,11 @@
   @apply disabled:border-b-ds-gray-100 disabled:placeholder:text-ds-gray-300;
 }
 
-.ds-input.ds-input-underline.ds-input-error {
+.ds-input.ds-input-underline.ds-validation-invalid {
   @apply border-b-ds-red-500;
 }
 
-.ds-input.ds-input-underline.ds-input-success {
+.ds-input.ds-input-underline.ds-validation-valid {
   @apply border-b-ds-teal-500;
 }
 
@@ -64,10 +66,10 @@
   @apply disabled:bg-ds-gray-50 disabled:border-ds-gray-100 disabled:placeholder:text-ds-gray-300;
 }
 
-.ds-input.ds-input-light.ds-input-error {
+.ds-input.ds-input-light.ds-validation-invalid {
   @apply border-ds-red-500 focus:shadow-ds-focus-error;
 }
 
-.ds-input.ds-input-light.ds-input-success {
+.ds-input.ds-input-light.ds-validation-valid {
   @apply border-ds-teal-500 focus:shadow-ds-focus-success;
 }

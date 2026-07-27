@@ -39,7 +39,7 @@ const Alert: FC<Props> = ({ title, subtitle, variant = "info", onClose, classNam
         {onClose && (
           <Button
             variant="ghost"
-            size="small"
+            size="sm"
             onClick={onClose}
             className="ds-alert-close-button"
             aria-label="Close alert"
