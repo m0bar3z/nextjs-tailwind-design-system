@@ -2,33 +2,34 @@
 
 import Typography from "@/components/atoms/Typography/Typography";
 import clsx from "clsx";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  cloneElement,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 import "./Tooltip.css";
-
-type Placement =
-  | "top"
-  | "top-start"
-  | "top-end"
-  | "bottom"
-  | "bottom-start"
-  | "bottom-end"
-  | "left"
-  | "left-start"
-  | "left-end"
-  | "right"
-  | "right-start"
-  | "right-end";
+import type { TooltipPlacement } from "./tooltip.types";
+import { useTooltipPosition } from "./useTooltipPosition";
 
 type Variant = "default" | "success" | "info" | "warning" | "error";
+type TooltipTriggerProps = {
+  "aria-describedby"?: string;
+  tabIndex?: number;
+};
 
 interface Props {
-  children: ReactNode;
+  children: ReactElement<TooltipTriggerProps>;
   content: ReactNode;
   open?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-  placement?: Placement;
+  placement?: TooltipPlacement;
   variant?: Variant;
   className?: string;
 }
@@ -52,13 +53,21 @@ const Tooltip = ({
   className,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [position, setPosition] = useState({ top: 0, left: 0 });
   const [isClient, setIsClient] = useState(false);
+  const interactionRef = useRef({ focused: false, hovered: false });
+  const requestedOpenRef = useRef(false);
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const tooltipId = useId();
 
   const isControlled = controlledOpen !== undefined;
   const tooltipOpen = isControlled ? controlledOpen : isOpen;
+  const position = useTooltipPosition({
+    open: tooltipOpen,
+    placement,
+    tooltipRef,
+    triggerRef,
+  });
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -66,115 +75,48 @@ const Tooltip = ({
   }, []);
 
   useEffect(() => {
-    if (!tooltipOpen || !triggerRef.current || !tooltipRef.current) return;
+    requestedOpenRef.current = tooltipOpen;
+  }, [tooltipOpen]);
 
-    const updatePosition = () => {
-      if (!triggerRef.current || !tooltipRef.current) return;
+  const requestOpenChange = useCallback(
+    (nextOpen: boolean) => {
+      if (requestedOpenRef.current === nextOpen) return;
 
-      const triggerRect = triggerRef.current.getBoundingClientRect();
-      const tooltipRect = tooltipRef.current.getBoundingClientRect();
-      const scrollY = window.scrollY;
-      const scrollX = window.scrollX;
-
-      let top = 0;
-      let left = 0;
-
-      const gap = 8;
-
-      switch (placement) {
-        case "top":
-          top = triggerRect.top + scrollY - tooltipRect.height - gap;
-          left = triggerRect.left + scrollX + triggerRect.width / 2 - tooltipRect.width / 2;
-          break;
-        case "top-start":
-          top = triggerRect.top + scrollY - tooltipRect.height - gap;
-          left = triggerRect.left + scrollX;
-          break;
-        case "top-end":
-          top = triggerRect.top + scrollY - tooltipRect.height - gap;
-          left = triggerRect.left + scrollX + triggerRect.width - tooltipRect.width;
-          break;
-        case "bottom":
-          top = triggerRect.bottom + scrollY + gap;
-          left = triggerRect.left + scrollX + triggerRect.width / 2 - tooltipRect.width / 2;
-          break;
-        case "bottom-start":
-          top = triggerRect.bottom + scrollY + gap;
-          left = triggerRect.left + scrollX;
-          break;
-        case "bottom-end":
-          top = triggerRect.bottom + scrollY + gap;
-          left = triggerRect.left + scrollX + triggerRect.width - tooltipRect.width;
-          break;
-        case "left":
-          top = triggerRect.top + scrollY + triggerRect.height / 2 - tooltipRect.height / 2;
-          left = triggerRect.left + scrollX - tooltipRect.width - gap;
-          break;
-        case "left-start":
-          top = triggerRect.top + scrollY;
-          left = triggerRect.left + scrollX - tooltipRect.width - gap;
-          break;
-        case "left-end":
-          top = triggerRect.top + scrollY + triggerRect.height - tooltipRect.height;
-          left = triggerRect.left + scrollX - tooltipRect.width - gap;
-          break;
-        case "right":
-          top = triggerRect.top + scrollY + triggerRect.height / 2 - tooltipRect.height / 2;
-          left = triggerRect.right + scrollX + gap;
-          break;
-        case "right-start":
-          top = triggerRect.top + scrollY;
-          left = triggerRect.right + scrollX + gap;
-          break;
-        case "right-end":
-          top = triggerRect.top + scrollY + triggerRect.height - tooltipRect.height;
-          left = triggerRect.right + scrollX + gap;
-          break;
-      }
-
-      const viewportPadding = 8;
-      const minLeft = scrollX + viewportPadding;
-      const maxLeft = scrollX + window.innerWidth - tooltipRect.width - viewportPadding;
-      const minTop = scrollY + viewportPadding;
-      const maxTop = scrollY + window.innerHeight - tooltipRect.height - viewportPadding;
-
-      left = Math.min(Math.max(left, minLeft), Math.max(minLeft, maxLeft));
-      top = Math.min(Math.max(top, minTop), Math.max(minTop, maxTop));
-
-      setPosition({ top, left });
-    };
-
-    updatePosition();
-
-    const handleResize = () => updatePosition();
-    const handleScroll = () => updatePosition();
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll, true);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll, true);
-    };
-  }, [tooltipOpen, placement]);
+      requestedOpenRef.current = nextOpen;
+      if (!isControlled) setIsOpen(nextOpen);
+      if (nextOpen) onOpen?.();
+      else onClose?.();
+    },
+    [isControlled, onClose, onOpen]
+  );
 
   const handleMouseEnter = () => {
-    if (!isControlled) {
-      setIsOpen(true);
-    }
-    onOpen?.();
+    interactionRef.current.hovered = true;
+    requestOpenChange(true);
   };
 
   const handleMouseLeave = () => {
-    if (!isControlled) {
-      setIsOpen(false);
-    }
-    onClose?.();
+    interactionRef.current.hovered = false;
+    if (!interactionRef.current.focused) requestOpenChange(false);
   };
 
-  if (!isClient) {
-    return <div ref={triggerRef}>{children}</div>;
-  }
+  const handleFocus = () => {
+    interactionRef.current.focused = true;
+    requestOpenChange(true);
+  };
+
+  const handleBlur = () => {
+    interactionRef.current.focused = false;
+    if (!interactionRef.current.hovered) requestOpenChange(false);
+  };
+
+  const describedBy = [children.props["aria-describedby"], tooltipOpen ? tooltipId : undefined]
+    .filter(Boolean)
+    .join(" ");
+  const trigger = cloneElement(children, {
+    "aria-describedby": describedBy || undefined,
+    tabIndex: children.props.tabIndex ?? 0,
+  });
 
   return (
     <>
@@ -182,17 +124,27 @@ const Tooltip = ({
         ref={triggerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onFocusCapture={handleFocus}
+        onBlurCapture={handleBlur}
+        onKeyDown={event => {
+          if (event.key !== "Escape" || !tooltipOpen) return;
+          event.preventDefault();
+          requestOpenChange(false);
+        }}
         className="ds-tooltip-trigger"
       >
-        {children}
+        {trigger}
       </div>
-      {tooltipOpen &&
+      {isClient &&
+        tooltipOpen &&
         createPortal(
           <div
+            id={tooltipId}
             ref={tooltipRef}
             className={clsx("ds-tooltip", `ds-tooltip-${placement}`, VARIANT_CLASSES[variant], className)}
+            role="tooltip"
             style={{
-              position: "absolute",
+              position: "fixed",
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}

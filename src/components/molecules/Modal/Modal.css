@@ -21,7 +21,7 @@
 .ds-modal {
   @apply shadow-ds-xl bg-ds-white relative flex flex-col overflow-hidden rounded-xl;
   @apply transition-all duration-300 ease-out;
-  @apply max-h-[90vh] w-full;
+  @apply max-h-[90vh] w-full overscroll-contain;
 }
 
 .ds-modal-enter {

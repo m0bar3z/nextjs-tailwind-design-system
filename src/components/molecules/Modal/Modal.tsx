@@ -2,15 +2,19 @@
 
 import Typography from "@/components/atoms/Typography/Typography";
 import clsx from "clsx";
-import { startTransition, useEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, useContext, useId, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.css";
+import { useModalAccessibility } from "./useModalAccessibility";
 
 interface Props {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
   size?: "sm" | "md" | "lg" | "xl" | "full";
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
 }
 
 interface ModalHeaderProps {
@@ -29,10 +33,19 @@ interface ModalFooterProps {
   className?: string;
 }
 
+interface ModalAccessibilityContextValue {
+  bodyId: string;
+  titleId: string;
+}
+
+const ModalAccessibilityContext = createContext<ModalAccessibilityContextValue | null>(null);
+
 const CloseIcon = () => {
   return (
     <svg
+      aria-hidden="true"
       className="ds-modal-close-icon"
+      focusable="false"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -50,10 +63,18 @@ const CloseIcon = () => {
 };
 
 export const ModalHeader = ({ title, onClose, className }: ModalHeaderProps) => {
+  const accessibility = useContext(ModalAccessibilityContext);
+
   return (
     <div className={clsx("ds-modal-header", className)}>
       {title && (
-        <Typography variant="xl" weight="semibold" className="ds-modal-header-title" as="h2">
+        <Typography
+          id={accessibility?.titleId}
+          variant="xl"
+          weight="semibold"
+          className="ds-modal-header-title"
+          as="h2"
+        >
           {title}
         </Typography>
       )}
@@ -67,131 +88,73 @@ export const ModalHeader = ({ title, onClose, className }: ModalHeaderProps) => 
 };
 
 export const ModalBody = ({ children, className }: ModalBodyProps) => {
-  return <div className={clsx("ds-modal-body", className)}>{children}</div>;
+  const accessibility = useContext(ModalAccessibilityContext);
+
+  return (
+    <div id={accessibility?.bodyId} className={clsx("ds-modal-body", className)}>
+      {children}
+    </div>
+  );
 };
 
 export const ModalFooter = ({ children, className }: ModalFooterProps) => {
   return <div className={clsx("ds-modal-footer", className)}>{children}</div>;
 };
 
-const ModalContainer = ({ children, onClose, size = "md" }: Props) => {
+const SIZE_CLASSES = {
+  sm: "ds-modal-sm",
+  md: "ds-modal-md",
+  lg: "ds-modal-lg",
+  xl: "ds-modal-xl",
+  full: "ds-modal-full",
+} as const;
+
+const ModalContainer = ({
+  children,
+  onClose,
+  size = "md",
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledBy,
+  "aria-describedby": ariaDescribedBy,
+}: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [isAnimating] = useState(true);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    // Prevent body scroll when modal is open
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
-  useEffect(() => {
-    if (modalRef.current) {
-      const focusableElements = modalRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      const firstElement = focusableElements[0] as HTMLElement;
-      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-
-      const handleTabKey = (e: KeyboardEvent) => {
-        if (e.key !== "Tab") return;
-
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement?.focus();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement?.focus();
-          }
-        }
-      };
-
-      firstElement?.focus();
-      document.addEventListener("keydown", handleTabKey);
-
-      return () => {
-        document.removeEventListener("keydown", handleTabKey);
-      };
-    }
-  }, []);
-
-  const sizeClasses = {
-    sm: "ds-modal-sm",
-    md: "ds-modal-md",
-    lg: "ds-modal-lg",
-    xl: "ds-modal-xl",
-    full: "ds-modal-full",
+  const generatedId = useId();
+  const accessibility = {
+    bodyId: `${generatedId}-description`,
+    titleId: `${generatedId}-title`,
   };
+
+  useModalAccessibility({ modalRef, onClose });
 
   return (
     <div
-      className={clsx("ds-modal-backdrop", isAnimating && "ds-modal-backdrop-enter")}
+      className="ds-modal-backdrop ds-modal-backdrop-enter"
       onClick={e => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
     >
-      <div
-        ref={modalRef}
-        className={clsx("ds-modal", sizeClasses[size], isAnimating && "ds-modal-enter")}
-        role="dialog"
-        aria-modal="true"
-      >
-        {children}
-      </div>
+      <ModalAccessibilityContext value={accessibility}>
+        <div
+          ref={modalRef}
+          className={clsx("ds-modal", SIZE_CLASSES[size], "ds-modal-enter")}
+          role="dialog"
+          aria-modal="true"
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy ?? (ariaLabel ? undefined : accessibility.titleId)}
+          aria-describedby={ariaDescribedBy ?? accessibility.bodyId}
+          tabIndex={-1}
+        >
+          {children}
+        </div>
+      </ModalAccessibilityContext>
     </div>
   );
 };
 
 const Modal = (props: Props) => {
-  const [shouldRender, setShouldRender] = useState<boolean>(props.isOpen);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const prevIsOpenRef = useRef<boolean>(props.isOpen);
-
-  useEffect(() => {
-    if (props.isOpen && !prevIsOpenRef.current) {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
-      }
-      startTransition(() => {
-        setShouldRender(true);
-      });
-    }
-
-    if (!props.isOpen && prevIsOpenRef.current) {
-      timeoutRef.current = setTimeout(() => {
-        startTransition(() => {
-          setShouldRender(false);
-        });
-      }, 300);
-    }
-
-    prevIsOpenRef.current = props.isOpen;
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
-      }
-    };
-  }, [props.isOpen]);
-
-  if (!shouldRender) return null;
+  if (!props.isOpen || typeof document === "undefined") return null;
 
   return createPortal(<ModalContainer {...props} />, document.body);
 };
