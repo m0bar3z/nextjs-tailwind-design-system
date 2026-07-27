@@ -8,6 +8,7 @@ export { default as Select } from "./atoms/FormControls/Select/Select";
 export { default as Switch } from "./atoms/FormControls/Switch/Switch";
 export { default as Typography } from "./atoms/Typography/Typography";
 export { default as Card } from "./molecules/Card/Card";
+export { default as FormField } from "./molecules/FormField/FormField";
 export { default as Modal, ModalBody, ModalFooter, ModalHeader } from "./molecules/Modal/Modal";
 export { default as ShowcaseCard } from "./molecules/ShowcaseCard/ShowcaseCard";
 export { default as Tooltip } from "./molecules/Tooltip/Tooltip";

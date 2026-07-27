@@ -5,6 +5,7 @@ import Radio from "@/components/atoms/FormControls/Radio/Radio";
 import Select from "@/components/atoms/FormControls/Select/Select";
 import Switch from "@/components/atoms/FormControls/Switch/Switch";
 import Typography from "@/components/atoms/Typography/Typography";
+import FormField from "@/components/molecules/FormField/FormField";
 import ShowcaseCard from "@/components/molecules/ShowcaseCard/ShowcaseCard";
 import ArrowUpToLine from "@/icons/ArrowUpToLine";
 
@@ -34,10 +35,17 @@ const CoreShowcase = () => (
 
     <ShowcaseCard title="Input Fields" description="Text input components with multiple styles and states.">
       <div className="w-full space-y-3">
-        <Input variant="bordered" placeholder="Bordered input" />
-        <Input variant="light" placeholder="Light input" />
-        <Input variant="underline" placeholder="Underline input" />
-        <Input validationState="invalid" placeholder="Invalid input" aria-label="Invalid input" />
+        <Input variant="bordered" placeholder="Bordered input" aria-label="Bordered input" />
+        <Input variant="light" placeholder="Light input" aria-label="Light input" />
+        <Input variant="underline" placeholder="Underline input" aria-label="Underline input" />
+        <FormField
+          label="Email address"
+          description="Use the address connected to your account."
+          errorMessage="Enter a valid email address."
+          required
+        >
+          <Input type="email" validationState="invalid" defaultValue="invalid-email" />
+        </FormField>
         <Input readOnly value="Read-only value" aria-label="Read-only input" />
       </div>
     </ShowcaseCard>

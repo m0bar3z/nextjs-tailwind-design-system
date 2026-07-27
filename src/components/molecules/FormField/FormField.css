@@ -1,0 +1,31 @@
+@reference "../../../styles/globals.css";
+
+.ds-form-field {
+  @apply flex w-full min-w-0 flex-col gap-1.5;
+}
+
+.ds-form-field-label {
+  @apply text-ds-gray-800 text-sm font-medium;
+}
+
+.ds-form-field-required {
+  @apply text-ds-red-600 ml-1;
+}
+
+.ds-form-field-description {
+  @apply text-ds-gray-500 text-sm;
+}
+
+.ds-form-field-control {
+  @apply min-w-0;
+}
+
+.ds-form-field-error {
+  @apply text-ds-red-600 text-sm;
+}
+
+@media (max-width: 640px) {
+  .ds-form-field-control {
+    @apply w-full;
+  }
+}
